@@ -1,0 +1,336 @@
+{
+  "normalizations": {
+    "ab9505e950dae84f8a1a03c51c16ce03": {
+      "normalized_id": "CREATE_CONTACT",
+      "normalized_text": "Create a contact"
+    },
+    "c13041e36e6682589494847f5e356673": {
+      "normalized_id": "START_VOICE_CALL",
+      "normalized_text": "Start a voice call"
+    },
+    "627410a30f5eb898e4d2256967ff0e69": {
+      "normalized_id": "CHECK_HD_ICON",
+      "normalized_text": "Check the HD icon"
+    },
+    "b6e04829912509f550ca7cf0c87b2747": {
+      "normalized_id": "CREATE_CONTACT",
+      "normalized_text": "Create a contact"
+    },
+    "3154ad41c92605b88c2ce01d26502966": {
+      "normalized_id": "START_VOICE_CALL",
+      "normalized_text": "Start a voice call"
+    },
+    "e5e845562ad95935e19abab3378c8c1f": {
+      "normalized_id": "UPGRADE_TO_VIDEO_CALL",
+      "normalized_text": "Upgrade to video call"
+    },
+    "0b7747356576beb5aabf66326b948b49": {
+      "normalized_id": "VERIFY_VIDEO_DISPLAY",
+      "normalized_text": "Confirm that the video displays correctly"
+    },
+    "41688d3e3c7e7edd146813c6a10fe7f0": {
+      "normalized_id": "CREATE_CONTACT",
+      "normalized_text": "Create a contact"
+    },
+    "643b754c7e56a194c57f5389ef8bf661": {
+      "normalized_id": "START_VOICE_CALL",
+      "normalized_text": "Start a voice call"
+    },
+    "5f928292b4ebea4d9f708c1195ead94a": {
+      "normalized_id": "UPGRADE_TO_VIDEO_CALL",
+      "normalized_text": "Upgrade to video call"
+    },
+    "b7dfd2c1828ec64aa9e43a7343b92334": {
+      "normalized_id": "DOWNGRADE_TO_VOICE_CALL",
+      "normalized_text": "Downgrade to voice call"
+    },
+    "c373e551ef45bca3e6cc32874e8fe703": {
+      "normalized_id": "VERIFY_RETURN_TO_VOICE_CALL",
+      "normalized_text": "Observe if it returned to voice call"
+    },
+    "cdffccd3935839dab0b98f7812601184": {
+      "normalized_id": "CREATE_CONTACT",
+      "normalized_text": "Create a contact"
+    },
+    "cca0b214569b3f1f02dc076569fdc66f": {
+      "normalized_id": "START_VOICE_CALL",
+      "normalized_text": "Start a voice call"
+    },
+    "2afa003b3efe49cf9292817dc9b1cf88": {
+      "normalized_id": "TOGGLE_MUTE",
+      "normalized_text": "Tap the mute button"
+    },
+    "00c2c90ccce8d580e45c288b3acc71d3": {
+      "normalized_id": "CHECK_MUTE_ICON",
+      "normalized_text": "The mute icon should be visible"
+    },
+    "ea7b05f39059478d6bb0eb013ea7311d": {
+      "normalized_id": "TOGGLE_MUTE",
+      "normalized_text": "Press the mute button"
+    },
+    "d289f31372f6489500afbc05d7f30d8a": {
+      "normalized_id": "VERIFY_AUDIO",
+      "normalized_text": "Audio must be working normally"
+    },
+    "2f35e2a1403597f163f78f5248e40acf": {
+      "normalized_id": "CREATE_CONTACT",
+      "normalized_text": "Create a contact"
+    },
+    "faeb24d3ff0beec1201cbcde7c9810e0": {
+      "normalized_id": "START_VOICE_CALL",
+      "normalized_text": "Start a voice call"
+    },
+    "7bc7e2994fcadea9827e05f9d14cdfec": {
+      "normalized_id": "VERIFY_CALL_CONNECTED",
+      "normalized_text": "The call should be connected"
+    },
+    "a8b56c6eb11e49e2c7526000cf26e382": {
+      "normalized_id": "END_CALL",
+      "normalized_text": "End the call"
+    },
+    "5d3a1dfbd87a71935e79bc69450004c5": {
+      "normalized_id": "VERIFY_RETURN_TO_HOME_SCREEN",
+      "normalized_text": "The device should return to home screen"
+    },
+    "9640a0858481de10d44d2fbf51276662": {
+      "normalized_id": "CREATE_CONTACT",
+      "normalized_text": "Crie um contato"
+    },
+    "6c2a8d336f7bb0e6869172568b417a8c": {
+      "normalized_id": "START_VOICE_CALL",
+      "normalized_text": "Inicie uma chamada de voz com o contato"
+    },
+    "7e2ea5a003e438d2ca6b72fc53376359": {
+      "normalized_id": "CHECK_HD_ICON",
+      "normalized_text": "Verifique o ícone de HD na tela de chamada"
+    },
+    "8f9a992d8a085cd85c61e3b44e93eea3": {
+      "normalized_id": "UPGRADE_TO_VIDEO",
+      "normalized_text": "Faça o upgrade para uma chamada de vídeo"
+    },
+    "02f2fd69f2b5bd459b0dc1406a42be50": {
+      "normalized_id": "CHECK_VIDEO_DISPLAY",
+      "normalized_text": "Verifique que o vídeo aparece corretamente"
+    },
+    "bcb53efc216817feed8218e24ec1d8ce": {
+      "normalized_id": "DOWNGRADE_TO_VOICE",
+      "normalized_text": "Faça downgrade para voz"
+    },
+    "30218359ec028d024f81d07e862132c4": {
+      "normalized_id": "CHECK_RETURN_TO_VOICE_CALL",
+      "normalized_text": "Veja se voltou para ligação de voz"
+    },
+    "52052bc68aa11b52d94dba5c9a834246": {
+      "normalized_id": "PUT_CALL_ON_HOLD",
+      "normalized_text": "Coloque a chamada em espera"
+    },
+    "2ace99d792bd0f66667ca0f8c1cc821f": {
+      "normalized_id": "CHECK_HOLD_ICON",
+      "normalized_text": "Verifique que o ícone de espera aparece"
+    },
+    "eaaf6562b525561e1c1f0e125ab8c967": {
+      "normalized_id": "RESUME_CALL",
+      "normalized_text": "Retome a chamada"
+    },
+    "ab35a955d3730f1034e08db8bee9b363": {
+      "normalized_id": "CHECK_AUDIO_NORMAL",
+      "normalized_text": "Verifique que o áudio voltou ao normal"
+    },
+    "e323e6ae51c07cecf0e73a3323999fb1": {
+      "normalized_id": "CHECK_CALL_CONNECTED",
+      "normalized_text": "Verifique que a chamada está conectada"
+    },
+    "54a3bbf13a9e52cdb116df7f189b56f4": {
+      "normalized_id": "END_CALL",
+      "normalized_text": "Encerre a chamada"
+    },
+    "e9a3f30aa22cee5098360c8bd256f05b": {
+      "normalized_id": "CHECK_RETURN_TO_HOME_SCREEN",
+      "normalized_text": "Verifique que voltou para a tela inicial"
+    },
+    "20a8dd3ca1ca4f96df4321f3be5c354a": {
+      "normalized_id": "OPEN_MESSAGING_APP_DURING_CALL",
+      "normalized_text": "Abra o app de mensagens durante a chamada"
+    },
+    "0ef42b223881264ed0c422c719c9e75e": {
+      "normalized_id": "SEND_SMS_TO_ANOTHER_CONTACT",
+      "normalized_text": "Envie um SMS para outro contato"
+    },
+    "d940e0fe28ade6975b2a4975a9ebc626": {
+      "normalized_id": "CHECK_SMS_SENT",
+      "normalized_text": "Verifique que o SMS foi enviado"
+    },
+    "3a5ea9174bbf5c8ba83be687b7065a16": {
+      "normalized_id": "RETURN_TO_CALL_SCREEN",
+      "normalized_text": "Volte para a tela de chamada"
+    },
+    "0ab8f598b46cace4d38c4affc661768f": {
+      "normalized_id": "CHECK_CALL_ACTIVE",
+      "normalized_text": "Verifique que a chamada continua ativa"
+    },
+    "0462cf52b99176d4a4f4f425298a90a7": {
+      "normalized_id": "ACTIVATE_MUTE_MODE",
+      "normalized_text": "Ative o modo mudo"
+    },
+    "7f0846d439c5c38574c59380dde0a383": {
+      "normalized_id": "CHECK_MUTE_ICON",
+      "normalized_text": "Verifique que o ícone de mudo aparece"
+    },
+    "1a9d6e88ca98d2d2c85c87ec6a42d4f4": {
+      "normalized_id": "DEACTIVATE_MUTE_MODE",
+      "normalized_text": "Desative o modo mudo"
+    }
+  },
+  "classifications": {
+    "CREATE_CONTACT": {
+      "step_type": "action",
+      "is_destructive": false,
+      "reasoning": "Creates a new context by adding a contact."
+    },
+    "START_VOICE_CALL": {
+      "step_type": "action",
+      "is_destructive": false,
+      "reasoning": "Initiates a voice call, establishing a new context."
+    },
+    "CHECK_HD_ICON": {
+      "step_type": "verification",
+      "is_destructive": false,
+      "reasoning": "Observes the HD icon without changing any state."
+    },
+    "UPGRADE_TO_VIDEO_CALL": {
+      "step_type": "action",
+      "is_destructive": true,
+      "reasoning": "Changes the call mode from voice to video, altering the existing state."
+    },
+    "VERIFY_VIDEO_DISPLAY": {
+      "step_type": "verification",
+      "is_destructive": false,
+      "reasoning": "Checks if the video displays correctly without changing any state."
+    },
+    "DOWNGRADE_TO_VOICE_CALL": {
+      "step_type": "action",
+      "is_destructive": true,
+      "reasoning": "Changes the call mode from video back to voice, altering the existing state."
+    },
+    "VERIFY_RETURN_TO_VOICE_CALL": {
+      "step_type": "verification",
+      "is_destructive": false,
+      "reasoning": "Observes if the call has returned to voice without changing any state."
+    },
+    "TOGGLE_MUTE": {
+      "step_type": "action",
+      "is_destructive": true,
+      "reasoning": "Changes the audio state by muting or unmuting the call."
+    },
+    "CHECK_MUTE_ICON": {
+      "step_type": "verification",
+      "is_destructive": false,
+      "reasoning": "Checks the visibility of the mute icon without changing any state."
+    },
+    "VERIFY_AUDIO": {
+      "step_type": "verification",
+      "is_destructive": false,
+      "reasoning": "Validates that audio is functioning normally without changing any state."
+    },
+    "VERIFY_CALL_CONNECTED": {
+      "step_type": "verification",
+      "is_destructive": false,
+      "reasoning": "Confirms that the call is connected without changing any state."
+    },
+    "END_CALL": {
+      "step_type": "action",
+      "is_destructive": true,
+      "reasoning": "Destroys the current call state by ending the call."
+    },
+    "VERIFY_RETURN_TO_HOME_SCREEN": {
+      "step_type": "verification",
+      "is_destructive": false,
+      "reasoning": "Observes if the device has returned to the home screen without changing any state."
+    },
+    "UPGRADE_TO_VIDEO": {
+      "step_type": "action",
+      "is_destructive": true,
+      "reasoning": "Changes the call mode from voice to video."
+    },
+    "CHECK_VIDEO_DISPLAY": {
+      "step_type": "verification",
+      "is_destructive": false,
+      "reasoning": "Observes if the video appears correctly without changing any state."
+    },
+    "DOWNGRADE_TO_VOICE": {
+      "step_type": "action",
+      "is_destructive": true,
+      "reasoning": "Changes the call mode from video back to voice."
+    },
+    "CHECK_RETURN_TO_VOICE_CALL": {
+      "step_type": "verification",
+      "is_destructive": false,
+      "reasoning": "Observes if the call has returned to voice without changing any state."
+    },
+    "PUT_CALL_ON_HOLD": {
+      "step_type": "action",
+      "is_destructive": true,
+      "reasoning": "Alters the state of the call by putting it on hold."
+    },
+    "CHECK_HOLD_ICON": {
+      "step_type": "verification",
+      "is_destructive": false,
+      "reasoning": "Observes if the hold icon appears without changing any state."
+    },
+    "RESUME_CALL": {
+      "step_type": "action",
+      "is_destructive": true,
+      "reasoning": "Changes the state of the call by resuming it from hold."
+    },
+    "CHECK_AUDIO_NORMAL": {
+      "step_type": "verification",
+      "is_destructive": false,
+      "reasoning": "Observes if the audio has returned to normal without changing any state."
+    },
+    "CHECK_CALL_CONNECTED": {
+      "step_type": "verification",
+      "is_destructive": false,
+      "reasoning": "Observes if the call is connected without changing any state."
+    },
+    "CHECK_RETURN_TO_HOME_SCREEN": {
+      "step_type": "verification",
+      "is_destructive": false,
+      "reasoning": "Observes if the screen has returned to home without changing any state."
+    },
+    "OPEN_MESSAGING_APP_DURING_CALL": {
+      "step_type": "action",
+      "is_destructive": false,
+      "reasoning": "Opens the messaging app without changing the call state."
+    },
+    "SEND_SMS_TO_ANOTHER_CONTACT": {
+      "step_type": "action",
+      "is_destructive": false,
+      "reasoning": "Sends an SMS which does not alter the current call state."
+    },
+    "CHECK_SMS_SENT": {
+      "step_type": "verification",
+      "is_destructive": false,
+      "reasoning": "Observes if the SMS was sent without changing any state."
+    },
+    "RETURN_TO_CALL_SCREEN": {
+      "step_type": "action",
+      "is_destructive": false,
+      "reasoning": "Navigates back to the call screen without changing the call state."
+    },
+    "CHECK_CALL_ACTIVE": {
+      "step_type": "verification",
+      "is_destructive": false,
+      "reasoning": "Observes if the call is still active without changing any state."
+    },
+    "ACTIVATE_MUTE_MODE": {
+      "step_type": "action",
+      "is_destructive": true,
+      "reasoning": "Changes the audio state by activating mute."
+    },
+    "DEACTIVATE_MUTE_MODE": {
+      "step_type": "action",
+      "is_destructive": true,
+      "reasoning": "Changes the audio state by deactivating mute."
+    }
+  }
+}

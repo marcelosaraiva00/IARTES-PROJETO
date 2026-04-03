@@ -10,6 +10,10 @@
     <header>
         <h1>IARTES</h1>
         <p class="subtitle">Otimização Inteligente de Sequência de Testes</p>
+        <nav class="nav-links">
+            <a href="/" class="active">Otimizador</a>
+            <a href="/benchmark">Benchmark</a>
+        </nav>
     </header>
 
     <main>
@@ -77,6 +81,11 @@ Verifique que o vídeo aparece"></textarea>
             <h2>Sequência Otimizada</h2>
 
             <div class="stats-bar" id="stats-bar"></div>
+
+            <details class="metrics-panel" id="metrics-panel" style="display:none;">
+                <summary>Métricas Detalhadas</summary>
+                <div class="metrics-grid" id="metrics-grid"></div>
+            </details>
 
             <div class="optimized-list" id="optimized-list"></div>
 

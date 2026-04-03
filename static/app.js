@@ -224,6 +224,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
+        renderMetrics(data.metrics);
+
         const listEl = document.getElementById("optimized-list");
         listEl.innerHTML = "";
 
@@ -273,7 +275,73 @@ document.addEventListener("DOMContentLoaded", () => {
             origList.appendChild(div);
         });
 
+        renderExportButtons(data);
+
         section.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function renderExportButtons(data) {
+        let container = document.getElementById("export-buttons");
+        if (!container) {
+            container = document.createElement("div");
+            container.id = "export-buttons";
+            container.className = "export-buttons";
+            document.getElementById("result-section").appendChild(container);
+        }
+
+        const resultBlob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+        const resultUrl = URL.createObjectURL(resultBlob);
+
+        let csvContent = "Posição,Step,Tipo,Destrutivo,Re-setup,Valida Testes\n";
+        data.optimized_sequence.forEach(item => {
+            csvContent += `${item.position},"${item.step_text}",${item.step_type},${item.is_destructive},${item.is_resetup},"${item.validates_tests.join(", ")}"\n`;
+        });
+        const csvBlob = new Blob([csvContent], { type: "text/csv" });
+        const csvUrl = URL.createObjectURL(csvBlob);
+
+        let metricsCsv = "Métrica,Valor\n";
+        if (data.metrics) {
+            Object.entries(data.metrics).forEach(([key, val]) => {
+                metricsCsv += `"${key}",${val}\n`;
+            });
+        }
+        const metricsBlob = new Blob([metricsCsv], { type: "text/csv" });
+        const metricsUrl = URL.createObjectURL(metricsBlob);
+
+        container.innerHTML = `
+            <a href="${resultUrl}" download="resultado.json" class="btn-export">Exportar JSON</a>
+            <a href="${csvUrl}" download="sequencia.csv" class="btn-export">Exportar Sequência CSV</a>
+            <a href="${metricsUrl}" download="metricas.csv" class="btn-export">Exportar Métricas CSV</a>
+        `;
+    }
+
+    function renderMetrics(metrics) {
+        const panel = document.getElementById("metrics-panel");
+        const grid = document.getElementById("metrics-grid");
+        if (!metrics) {
+            panel.style.display = "none";
+            return;
+        }
+        panel.style.display = "block";
+
+        const items = [
+            { label: "Steps Únicos (norm. IDs)", value: metrics.unique_normalized_ids },
+            { label: "Grupos Normalizados", value: metrics.normalized_groups },
+            { label: "Verificações Detectadas", value: metrics.verifications_detected },
+            { label: "Ações Detectadas", value: metrics.actions_detected },
+            { label: "Steps Destrutivos", value: metrics.destructive_steps },
+            { label: "Re-setups Inseridos", value: metrics.resetup_count },
+            { label: "Trocas de Contexto", value: metrics.context_switches },
+            { label: "Profundidade Merge (máx)", value: metrics.merge_depth_max },
+            { label: "Profundidade Merge (média)", value: metrics.merge_depth_avg },
+        ];
+
+        grid.innerHTML = items.map(m => `
+            <div class="metric-item">
+                <span class="metric-value">${m.value}</span>
+                <span class="metric-label">${m.label}</span>
+            </div>
+        `).join("");
     }
 
     // --- Error handling ---

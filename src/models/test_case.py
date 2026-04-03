@@ -52,6 +52,7 @@ class OptimizationResult:
 
     optimized_sequence: list[OptimizedStep] = field(default_factory=list)
     original_test_cases: list[TestCase] = field(default_factory=list)
+    metrics: Optional[dict] = None
 
     @property
     def original_step_count(self) -> int:
@@ -94,6 +95,7 @@ class OptimizationResult:
                 "reduction_percent": round(self.reduction_percent, 1),
                 "test_count": len(self.original_test_cases),
             },
+            "metrics": self.metrics if self.metrics else None,
             "original_tests": [
                 {"id": tc.id, "name": tc.name, "step_count": tc.step_count}
                 for tc in self.original_test_cases

@@ -1,0 +1,100 @@
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--text);
+}
+
+.nav-links a.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.comparison-table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 0.6rem 0.85rem;
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+.comparison-table th {
+    background: var(--bg-input);
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.comparison-table td:first-child {
+    text-align: left;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.comparison-table tr:hover td {
+    background: rgba(108, 99, 255, 0.04);
+}
+
+.cell-best {
+    color: var(--success);
+    font-weight: 700;
+}
+
+.side-by-side {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.side-panel {
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+}
+
+.side-panel h3 {
+    font-size: 0.95rem;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.side-panel .opt-step {
+    font-size: 0.82rem;
+    padding: 0.4rem 0.5rem;
+}
+
+.side-panel .opt-step-num {
+    font-size: 0.72rem;
+    min-width: 22px;
+}
+
+.side-panel .badge {
+    font-size: 0.62rem;
+    padding: 0.1rem 0.35rem;
+}

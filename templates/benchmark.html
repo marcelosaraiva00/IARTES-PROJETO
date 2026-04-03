@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IARTES - Benchmark Comparativo</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/benchmark.css">
+</head>
+<body>
+    <header>
+        <h1>IARTES</h1>
+        <p class="subtitle">Benchmark Comparativo: Local vs LLM</p>
+        <nav class="nav-links">
+            <a href="/">Otimizador</a>
+            <a href="/benchmark" class="active">Benchmark</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="input-section">
+            <h2>Casos de Teste para Benchmark</h2>
+            <textarea id="raw-text" rows="14" placeholder="Cole seus casos de teste aqui...
+
+Formato esperado:
+TEST-001 - Nome do Teste
+Crie um contato
+Inicie uma chamada de voz
+Verifique o ícone de HD
+
+TEST-002 - Outro Teste
+Crie um contato
+Inicie uma chamada de voz
+Faça upgrade para vídeo
+Verifique que o vídeo aparece"></textarea>
+
+            <button class="btn-optimize" id="btn-benchmark">Executar Benchmark</button>
+        </section>
+
+        <div class="loading-overlay" id="loading" style="display:none;">
+            <div class="spinner"></div>
+            <p>Executando benchmark com múltiplos providers...</p>
+        </div>
+
+        <div class="error-banner" id="error-banner" style="display:none;">
+            <span id="error-message"></span>
+            <button class="btn-close-error" id="btn-close-error">&times;</button>
+        </div>
+
+        <section class="result-section" id="result-section" style="display:none;">
+            <h2>Tabela Comparativa</h2>
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table" id="comparison-table"></table>
+            </div>
+
+            <div id="side-by-side" class="side-by-side"></div>
+        </section>
+    </main>
+
+    <script src="/static/benchmark.js"></script>
+</body>
+</html>

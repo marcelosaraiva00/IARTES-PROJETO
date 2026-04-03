@@ -215,14 +215,20 @@ class LocalProvider(LLMProvider):
         return ""
 
     def complete_json(self, prompt: str, *, system_prompt: str = "") -> dict | list:
-        if "STEPS PARA NORMALIZAR" in prompt:
+        if "STEPS PARA NORMALIZAR" in prompt or "STEPS TO NORMALIZE" in prompt:
             return self._handle_normalization(prompt)
-        if "STEPS PARA CLASSIFICAR" in prompt:
+        if "STEPS PARA CLASSIFICAR" in prompt or "STEPS TO CLASSIFY" in prompt:
             return self._handle_classification(prompt)
         return {}
 
     def _handle_normalization(self, prompt: str) -> dict:
-        lines = prompt.split("STEPS PARA NORMALIZAR:")[-1].strip().splitlines()
+        for marker in ("STEPS TO NORMALIZE:", "STEPS PARA NORMALIZAR:"):
+            if marker in prompt:
+                raw = prompt.split(marker)[-1]
+                break
+        else:
+            raw = prompt
+        lines = raw.strip().splitlines()
         steps = [line.strip().lstrip("- ").strip() for line in lines if line.strip().startswith("-")]
 
         signatures: list[tuple[str, str, str]] = []
@@ -262,7 +268,13 @@ class LocalProvider(LLMProvider):
         return {"mappings": mappings}
 
     def _handle_classification(self, prompt: str) -> dict:
-        lines = prompt.split("STEPS PARA CLASSIFICAR:")[-1].strip().splitlines()
+        for marker in ("STEPS TO CLASSIFY:", "STEPS PARA CLASSIFICAR:"):
+            if marker in prompt:
+                raw = prompt.split(marker)[-1]
+                break
+        else:
+            raw = prompt
+        lines = raw.strip().splitlines()
 
         classifications = {}
         for line in lines:

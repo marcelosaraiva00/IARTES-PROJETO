@@ -1,0 +1,343 @@
+TEST-001 - Conexão WiFi Básica
+Abra o aplicativo Configurações
+Navegue até as configurações de WiFi
+Ative o WiFi
+Selecione a rede "TestNetwork_5G"
+Digite a senha "secure123"
+Toque em Conectar
+Verifique que o ícone de WiFi conectado aparece na barra de status
+Verifique que o nome da rede mostra "TestNetwork_5G"
+
+TEST-002 - Intensidade do Sinal WiFi
+Abra o aplicativo Configurações
+Navegue até as configurações de WiFi
+Ative o WiFi
+Selecione a rede "TestNetwork_5G"
+Digite a senha "secure123"
+Toque em Conectar
+Verifique que o ícone de WiFi conectado aparece na barra de status
+Abra a cortina de notificações
+Verifique que o indicador de sinal mostra pelo menos 3 barras
+
+TEST-003 - Desconexão e Reconexão WiFi
+Abra o aplicativo Configurações
+Navegue até as configurações de WiFi
+Ative o WiFi
+Selecione a rede "TestNetwork_5G"
+Digite a senha "secure123"
+Toque em Conectar
+Verifique que o ícone de WiFi conectado aparece na barra de status
+Toque em Desconectar
+Verifique que a mensagem de WiFi desconectado aparece
+Selecione a rede "TestNetwork_5G"
+Verifique que o WiFi reconecta automaticamente sem pedir a senha
+
+TEST-004 - Esquecer Rede WiFi
+Abra o aplicativo Configurações
+Navegue até as configurações de WiFi
+Ative o WiFi
+Selecione a rede "TestNetwork_5G"
+Digite a senha "secure123"
+Toque em Conectar
+Verifique que o ícone de WiFi conectado aparece na barra de status
+Pressione e segure na rede conectada
+Toque em Esquecer Rede
+Verifique que a rede foi removida da lista de redes salvas
+
+TEST-005 - Pareamento Bluetooth com Fone
+Abra o aplicativo Configurações
+Navegue até as configurações de Bluetooth
+Ative o Bluetooth
+Verifique que o dispositivo está buscando aparelhos próximos
+Selecione "WH-1000XM5" na lista de dispositivos disponíveis
+Confirme o código de pareamento em ambos os dispositivos
+Verifique que "WH-1000XM5" aparece como Conectado
+
+TEST-006 - Roteamento de Áudio Bluetooth
+Abra o aplicativo Configurações
+Navegue até as configurações de Bluetooth
+Ative o Bluetooth
+Selecione "WH-1000XM5" na lista de dispositivos disponíveis
+Confirme o código de pareamento em ambos os dispositivos
+Verifique que "WH-1000XM5" aparece como Conectado
+Abra o aplicativo de Música
+Reproduza uma música
+Verifique que o áudio está sendo enviado para o fone Bluetooth
+Verifique que os controles de mídia aparecem no fone
+
+TEST-007 - Desconexão Bluetooth Durante Chamada
+Abra o aplicativo Configurações
+Navegue até as configurações de Bluetooth
+Ative o Bluetooth
+Selecione "WH-1000XM5" na lista de dispositivos disponíveis
+Confirme o código de pareamento em ambos os dispositivos
+Verifique que "WH-1000XM5" aparece como Conectado
+Abra o aplicativo Telefone
+Disque o número "+1-555-0199"
+Verifique que a chamada está conectada
+Verifique que o áudio está sendo transmitido pelo fone Bluetooth
+Desative o Bluetooth
+Verifique que o áudio da chamada muda para o alto-falante
+Verifique que a chamada permanece conectada
+
+TEST-008 - Captura de Foto
+Abra o aplicativo Câmera
+Mude para o modo Foto
+Verifique que o visor está ativo
+Toque no botão de captura
+Verifique que a animação do obturador é exibida
+Verifique que a notificação de foto salva aparece
+Abra o aplicativo Galeria
+Verifique que a última foto aparece nas fotos recentes
+
+TEST-009 - Gravação de Vídeo
+Abra o aplicativo Câmera
+Mude para o modo Vídeo
+Verifique que o visor está ativo
+Toque no botão de gravar
+Aguarde 10 segundos
+Toque no botão de parar gravação
+Verifique que a notificação de vídeo salvo aparece
+Abra o aplicativo Galeria
+Verifique que o último vídeo aparece na mídia recente
+Reproduza o vídeo gravado
+Verifique que a reprodução do vídeo funciona corretamente
+
+TEST-010 - Câmera Frontal
+Abra o aplicativo Câmera
+Mude para o modo Foto
+Verifique que o visor está ativo
+Toque no botão de trocar câmera
+Verifique que a câmera frontal está ativa
+Verifique que o indicador de detecção facial aparece
+Toque no botão de captura
+Verifique que a selfie foi salva
+
+TEST-011 - Zoom Durante Gravação de Vídeo
+Abra o aplicativo Câmera
+Mude para o modo Vídeo
+Verifique que o visor está ativo
+Toque no botão de gravar
+Faça gesto de pinça para ampliar até 3x
+Verifique que o indicador de zoom mostra 3x
+Faça gesto de pinça para reduzir até 1x
+Toque no botão de parar gravação
+Abra o aplicativo Galeria
+Reproduza o vídeo gravado
+Verifique que as transições de zoom aparecem na reprodução
+
+TEST-012 - Configuração de Pagamento NFC
+Abra o aplicativo Configurações
+Navegue até as configurações de NFC
+Ative o NFC
+Abra o aplicativo Carteira
+Toque em Adicionar método de pagamento
+Insira o número do cartão "4111-1111-1111-1111"
+Insira a data de validade e CVV
+Verifique que o cartão foi adicionado com sucesso
+Verifique que o cartão aparece na Carteira
+
+TEST-013 - Pagamento Rápido NFC
+Abra o aplicativo Configurações
+Navegue até as configurações de NFC
+Ative o NFC
+Abra o aplicativo Carteira
+Verifique que o cartão de pagamento padrão está definido
+Aproxime o celular do terminal de pagamento
+Verifique que o prompt de autenticação de pagamento aparece
+Autentique com impressão digital
+Verifique que a notificação de transação concluída aparece
+
+TEST-014 - Exceção de Chamadas no Não Perturbe
+Abra o aplicativo Configurações
+Navegue até as configurações de Som
+Ative o modo Não Perturbe
+Toque em Exceções permitidas
+Ative a exceção para contatos favoritos
+Salve as configurações
+Abra o aplicativo Telefone
+Receba uma chamada de um contato favorito
+Verifique que o telefone toca apesar do modo Não Perturbe
+
+TEST-015 - Exceção de Alarme no Não Perturbe
+Abra o aplicativo Configurações
+Navegue até as configurações de Som
+Ative o modo Não Perturbe
+Abra o aplicativo Relógio
+Configure um alarme para 2 minutos
+Aguarde o alarme disparar
+Verifique que o alarme toca apesar do modo Não Perturbe
+Dispense o alarme
+
+TEST-016 - Agendamento do Não Perturbe
+Abra o aplicativo Configurações
+Navegue até as configurações de Som
+Ative o modo Não Perturbe
+Toque em Opção de agendamento
+Configure o horário de início para 22:00
+Configure o horário de término para 07:00
+Salve o agendamento
+Verifique que o indicador de agendamento do Não Perturbe aparece
+
+TEST-017 - Efeitos do Modo Economia de Bateria
+Abra o aplicativo Configurações
+Navegue até as configurações de Bateria
+Verifique que a porcentagem atual da bateria é exibida
+Ative o modo Economia de Bateria
+Verifique que a barra de status fica laranja
+Verifique que a notificação de sincronização pausada aparece
+Abra o aplicativo de E-mail
+Verifique que os e-mails não estão sincronizando automaticamente
+Desative o modo Economia de Bateria
+Verifique que a barra de status volta à cor normal
+
+TEST-018 - Agrupamento de Notificações
+Abra o aplicativo Configurações
+Navegue até as configurações de Notificações
+Ative o agrupamento de notificações
+Abra o aplicativo Mensagens
+Envie uma mensagem de teste para o Contato A
+Envie uma mensagem de teste para o Contato B
+Envie outra mensagem de teste para o Contato A
+Abra a cortina de notificações
+Verifique que as mensagens do Contato A estão agrupadas
+Verifique que a mensagem do Contato B está separada
+
+TEST-019 - Bloqueio de Rotação de Tela
+Abra o aplicativo Configurações
+Navegue até as configurações de Tela
+Desative a rotação automática
+Abra o aplicativo Navegador
+Acesse uma página web
+Gire o dispositivo para paisagem
+Verifique que a tela permanece em modo retrato
+Ative a rotação automática pelo painel rápido
+Gire o dispositivo para paisagem
+Verifique que a tela gira para paisagem
+
+TEST-020 - Modo Escuro
+Abra o aplicativo Configurações
+Navegue até as configurações de Tela
+Ative o Modo Escuro
+Verifique que o fundo do aplicativo Configurações muda para escuro
+Abra o aplicativo Mensagens
+Verifique que o fundo do aplicativo Mensagens está escuro
+Abra o aplicativo Navegador
+Verifique que a interface do Navegador está escura
+Desative o Modo Escuro
+Verifique que os aplicativos voltam ao tema claro
+
+TEST-021 - Tela Dividida Multi-Janela
+Abra o aplicativo Mensagens
+Acione o modo de tela dividida
+Selecione o aplicativo Navegador para o segundo painel
+Verifique que ambos os aplicativos estão visíveis simultaneamente
+Digite uma mensagem no aplicativo Mensagens
+Verifique que o texto da mensagem aparece corretamente
+Role a página no painel do Navegador
+Verifique que a rolagem funciona independentemente
+Saia do modo de tela dividida
+Verifique que a tela cheia retorna ao último aplicativo ativo
+
+TEST-022 - Cadastro de Impressão Digital
+Abra o aplicativo Configurações
+Navegue até as configurações de Segurança
+Toque em Configurar impressão digital
+Insira o PIN do dispositivo para verificação
+Coloque o dedo no sensor
+Levante e coloque o dedo repetidamente até completar o cadastro
+Verifique que a mensagem de impressão digital registrada aparece
+Verifique que a impressão digital aparece na lista de registros
+
+TEST-023 - Desbloqueio por Impressão Digital
+Abra o aplicativo Configurações
+Navegue até as configurações de Segurança
+Toque em Configurar impressão digital
+Insira o PIN do dispositivo para verificação
+Verifique que pelo menos uma impressão digital está registrada
+Bloqueie a tela do dispositivo
+Coloque o dedo registrado no sensor
+Verifique que o dispositivo desbloqueia para a tela inicial
+
+TEST-024 - Configuração de Conexão VPN
+Abra o aplicativo Configurações
+Navegue até as configurações de Rede
+Toque na opção VPN
+Adicione um novo perfil VPN
+Insira o endereço do servidor "vpn.testcorp.com"
+Insira as credenciais
+Toque em Conectar
+Verifique que o ícone de VPN conectado aparece na barra de status
+Abra o aplicativo Navegador
+Verifique que o endereço IP mudou através da VPN
+
+TEST-025 - Desconexão Automática da VPN ao Mudar WiFi
+Abra o aplicativo Configurações
+Navegue até as configurações de Rede
+Toque na opção VPN
+Conecte ao perfil VPN salvo
+Verifique que o ícone de VPN conectado aparece na barra de status
+Navegue até as configurações de WiFi
+Desconecte da rede WiFi atual
+Verifique que a conexão VPN cai
+Conecte a uma rede WiFi diferente
+Verifique que a VPN não reconecta automaticamente
+
+TEST-026 - Tamanho de Fonte de Acessibilidade
+Abra o aplicativo Configurações
+Navegue até as configurações de Acessibilidade
+Toque na opção Tamanho da fonte
+Aumente o tamanho da fonte para Extra Grande
+Verifique que o texto das Configurações aumenta de tamanho
+Abra o aplicativo Mensagens
+Verifique que o texto das mensagens aparece em Extra Grande
+Abra o aplicativo Contatos
+Verifique que os nomes dos contatos aparecem em Extra Grande
+Restaure o tamanho da fonte para Padrão
+
+TEST-027 - Leitor de Tela de Acessibilidade
+Abra o aplicativo Configurações
+Navegue até as configurações de Acessibilidade
+Ative o Leitor de Tela (TalkBack)
+Verifique que o retorno de voz começa imediatamente
+Toque no título Configurações
+Verifique que o leitor de tela anuncia "Configurações"
+Navegue até as configurações de WiFi usando gestos de deslizar
+Verifique que cada elemento é anunciado
+Desative o Leitor de Tela
+Verifique que o retorno de voz para
+
+TEST-028 - Limpeza de Armazenamento
+Abra o aplicativo Configurações
+Navegue até as configurações de Armazenamento
+Verifique que o resumo de uso do armazenamento é exibido
+Toque em Limpar armazenamento
+Verifique que os arquivos de cache são listados
+Selecione todos os arquivos de cache
+Toque em Excluir
+Verifique que o espaço de armazenamento aumentou
+Verifique que a mensagem de confirmação de exclusão aparece
+
+TEST-029 - Gerenciamento de Permissões de Aplicativo
+Abra o aplicativo Configurações
+Navegue até o Gerenciamento de Aplicativos
+Selecione o aplicativo Câmera
+Toque em Permissões
+Verifique que a permissão de Localização está listada
+Altere a permissão de Localização para Negar
+Verifique que a confirmação de permissão negada aparece
+Abra o aplicativo Câmera
+Verifique que a tag de localização não é adicionada às novas fotos
+
+TEST-030 - Criação e Conexão de Hotspot
+Abra o aplicativo Configurações
+Navegue até as configurações de Rede
+Toque na opção Hotspot Móvel
+Defina o nome do hotspot como "MeuHotspot"
+Defina a senha do hotspot como "teste1234"
+Ative o Hotspot Móvel
+Verifique que o ícone de hotspot ativo aparece na barra de status
+Conecte um segundo dispositivo ao "MeuHotspot"
+Verifique que a contagem de dispositivos conectados mostra 1
+Desative o Hotspot Móvel
+Verifique que o ícone do hotspot desaparece da barra de status

@@ -25,46 +25,49 @@ VERB_GROUPS = {
         "assegure", "assegurar", "certifique", "certificar",
     ],
     "navigation": [
-        "go", "open", "launch",
+        "go", "open", "launch", "navigate",
         "va", "ir", "abra", "abrir", "inicie", "iniciar", "acesse", "acessar",
         "navegue", "navegar",
     ],
     "interaction": [
-        "select", "tap", "press", "choose", "touch", "click",
+        "select", "tap", "press", "choose", "touch", "click", "long",
         "selecione", "selecionar", "toque", "tocar",
         "pressione", "pressionar", "clique", "clicar",
         "escolha", "escolher",
     ],
     "toggle": [
-        "turn", "enable", "disable",
+        "turn", "enable", "disable", "toggle", "activate", "deactivate",
         "ative", "ativar", "desative", "desativar",
         "habilite", "habilitar", "desabilite", "desabilitar",
         "ligue", "ligar", "desligue", "desligar",
     ],
     "execution": [
         "make", "run", "start", "perform", "setup", "execute", "initiate",
-        "begin", "place", "create", "add", "register",
+        "begin", "place", "create", "add", "register", "trigger",
         "faca", "fazer", "rode", "rodar", "comece", "comecar",
         "realize", "realizar", "executar",
         "crie", "criar", "configure", "configurar",
         "adicione", "adicionar", "cadastre", "cadastrar", "registre", "registrar",
     ],
     "communication": [
-        "get", "receive", "send", "answer",
+        "receive", "send", "answer", "dial", "call",
         "receba", "receber", "envie", "enviar",
         "atenda", "atender", "responda", "responder",
+        "ligue", "disque",
     ],
     "state_change": [
-        "switch", "change", "upgrade", "downgrade",
+        "switch", "change", "upgrade", "downgrade", "rotate", "increase",
+        "decrease", "adjust",
         "troque", "trocar", "mude", "mudar", "altere", "alterar",
-        "edite", "editar",
+        "edite", "editar", "aumente", "aumentar", "diminua", "diminuir",
     ],
     "configuration": [
-        "set", "define",
+        "set", "define", "save",
         "defina", "definir", "ajuste", "ajustar",
+        "salve", "salvar",
     ],
     "gesture": [
-        "swipe", "drag", "move", "scroll",
+        "swipe", "drag", "move", "scroll", "pinch", "lift",
         "deslize", "deslizar", "arraste", "arrastar", "mova", "mover",
         "role", "rolar",
     ],
@@ -95,6 +98,7 @@ VERB_GROUPS = {
     ],
     "dialog": [
         "allow", "dismiss", "accept", "deny", "reject", "confirm", "cancel",
+        "authenticate",
         "permita", "permitir", "aceite", "aceitar",
         "rejeite", "rejeitar",
         "cancele", "cancelar", "dispense", "dispensar",
@@ -105,7 +109,7 @@ VERB_GROUPS = {
         "tranque", "trancar", "destranque", "destrancar",
     ],
     "deletion": [
-        "remove", "delete", "clear", "erase", "wipe",
+        "remove", "delete", "clear", "erase", "wipe", "forget",
         "remova", "remover", "deletar",
         "apague", "apagar", "exclua", "excluir",
         "limpe", "limpar",
@@ -123,6 +127,9 @@ VERB_GROUPS = {
     "return": [
         "return", "back", "volte", "voltar", "retome", "retomar",
         "retorne", "retornar",
+    ],
+    "wait": [
+        "wait", "hold", "aguarde", "aguardar", "espere", "esperar",
     ],
 }
 
@@ -245,10 +252,13 @@ class LocalProvider(LLMProvider):
                     placed = True
                     break
             if not placed:
-                if not placed:
+                sig_has_unknown = sig_i[0] == "unknown" or sig_i[1] == "unknown"
+                if sig_has_unknown:
                     for group in groups:
                         rep_idx = group[0]
-                        if _are_similar_text(steps[i], steps[rep_idx]):
+                        rep_sig = signatures[rep_idx]
+                        rep_unknown = rep_sig[0] == "unknown" or rep_sig[1] == "unknown"
+                        if rep_unknown and _are_similar_text(steps[i], steps[rep_idx]):
                             group.append(i)
                             placed = True
                             break
@@ -314,60 +324,110 @@ def _extract_words(text: str) -> list[str]:
     return re.findall(r"[a-z]+", _normalize_text(text))
 
 
+_MAX_VERB_SEARCH_POS = 3
+
+
 def _find_verb_group(text: str) -> str | None:
-    """Encontra o grupo BB8 do primeiro verbo no texto."""
+    """Encontra o grupo BB8 do primeiro verbo no texto.
+
+    Só busca nas primeiras N palavras para evitar falsos positivos como
+    "settings" → "set".
+    """
     words = _extract_words(text)
-    for word in words:
+    search_words = words[:_MAX_VERB_SEARCH_POS]
+
+    for word in search_words:
         if word in _VERB_INDEX:
             return _VERB_INDEX[word][0]
-    for word in words:
-        if len(word) < 3:
+    for word in search_words:
+        if len(word) < 4:
             continue
         for verb, info in _VERB_INDEX.items():
-            if len(verb) < 3:
+            if len(verb) < 4:
                 continue
-            if word.startswith(verb) or verb.startswith(word):
+            if _is_stem_match(word, verb):
                 return info[0]
     return None
 
 
+def _is_stem_match(word: str, verb: str) -> bool:
+    """Match por radical: ambas devem compartilhar pelo menos 80% do comprimento."""
+    shorter = min(len(word), len(verb))
+    longer = max(len(word), len(verb))
+    if longer - shorter > 3:
+        return False
+    common = 0
+    for a, b in zip(word, verb):
+        if a == b:
+            common += 1
+        else:
+            break
+    return common >= shorter * 0.8 and common >= 3
+
+
+_DIRECTION_WORDS = {"in", "out", "up", "down", "on", "off"}
+
+
 def _extract_object(text: str) -> str:
-    """Extrai o objeto/alvo principal do step (após remover verbo e stopwords)."""
+    """Extrai o objeto/alvo principal do step (após remover verbo e stopwords).
+
+    Preserva modificadores direcionais (in/out/up/down) como parte do objeto
+    para diferenciar 'zoom in' de 'zoom out', etc.
+    """
     words = _extract_words(text)
 
     verb_idx = -1
-    for i, word in enumerate(words):
+    search_words = words[:_MAX_VERB_SEARCH_POS]
+    for i, word in enumerate(search_words):
         if word in _VERB_INDEX:
             verb_idx = i
             break
-        for verb in _VERB_INDEX:
-            if len(word) >= 3 and len(verb) >= 3:
-                if word.startswith(verb) or verb.startswith(word):
+        if len(word) >= 4:
+            for verb in _VERB_INDEX:
+                if len(verb) >= 4 and _is_stem_match(word, verb):
                     verb_idx = i
                     break
         if verb_idx >= 0:
             break
 
     content_words = words[verb_idx + 1:] if verb_idx >= 0 else words
-    content_words = [w for w in content_words if w not in _STOPWORDS and len(w) > 1]
 
-    normalized_obj = _canonicalize_object(" ".join(content_words))
+    direction = ""
+    remaining = []
+    for w in content_words:
+        if w in _DIRECTION_WORDS and not direction:
+            direction = w
+        elif w not in _STOPWORDS:
+            remaining.append(w)
+
+    normalized_obj = _canonicalize_object(" ".join(remaining))
+    if direction:
+        normalized_obj = normalized_obj + "_" + direction
     return normalized_obj
 
 
 def _canonicalize_object(obj_text: str) -> str:
-    """Mapeia sinônimos de objetos para um nome canônico."""
+    """Mapeia sinônimos de objetos para um nome canônico.
+
+    Preserva palavras curtas que são identificadores (A, B, 5G, etc.)
+    quando aparecem após o objeto principal.
+    """
     lower = obj_text.lower()
     for canonical, synonyms in _OBJECT_SYNONYMS.items():
         for syn in synonyms:
             if syn in lower:
                 remaining = lower.replace(syn, "").strip()
-                remaining_words = [w for w in remaining.split() if w not in _STOPWORDS and len(w) > 1]
+                remaining_words = [
+                    w for w in remaining.split()
+                    if w not in _STOPWORDS
+                ]
+                remaining_words = [w for w in remaining_words if len(w) > 1 or w.isalnum()]
                 if remaining_words:
-                    return canonical + "_" + "_".join(remaining_words[:2])
+                    return canonical + "_" + "_".join(remaining_words[:3])
                 return canonical
-    words = [w for w in lower.split() if w not in _STOPWORDS and len(w) > 1]
-    return "_".join(words[:4]) if words else "unknown"
+    words = [w for w in lower.split() if w not in _STOPWORDS]
+    words = [w for w in words if len(w) > 1 or w.isalnum()]
+    return "_".join(words[:5]) if words else "unknown"
 
 
 def _extract_signature(text: str) -> tuple[str, str, str]:
@@ -479,16 +539,17 @@ def _classify_step(text: str) -> tuple[str, bool, bool]:
 
 def _classify_by_verb(text: str) -> tuple[str, bool, bool]:
     words = _extract_words(text)
-    for word in words:
+    search_words = words[:_MAX_VERB_SEARCH_POS]
+    for word in search_words:
         if word in _VERB_INDEX:
             return _VERB_INDEX[word]
-    for word in words:
-        if len(word) < 3:
+    for word in search_words:
+        if len(word) < 4:
             continue
         for verb, info in _VERB_INDEX.items():
-            if len(verb) < 3:
+            if len(verb) < 4:
                 continue
-            if word.startswith(verb) or verb.startswith(word):
+            if _is_stem_match(word, verb):
                 return info
     return ("unknown", False, False)
 

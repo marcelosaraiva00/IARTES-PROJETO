@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IARTES - Otimizador de Casos de Teste</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>IARTES</h1>
+        <p class="subtitle">Otimização Inteligente de Sequência de Testes</p>
+    </header>
+
+    <main>
+        <section class="input-section">
+            <div class="tabs">
+                <button class="tab active" data-tab="form">Formulário</button>
+                <button class="tab" data-tab="text">Colar Texto</button>
+                <button class="tab" data-tab="file">Upload Arquivo</button>
+            </div>
+
+            <!-- Tab: Formulário -->
+            <div class="tab-content active" id="tab-form">
+                <div id="test-cases-container">
+                    <div class="test-case-block" data-index="0">
+                        <div class="test-case-header">
+                            <input type="text" class="tc-id" placeholder="ID (ex: TEST-001)" value="TEST-001">
+                            <input type="text" class="tc-name" placeholder="Nome do teste">
+                            <button class="btn-remove-tc" title="Remover teste">&times;</button>
+                        </div>
+                        <div class="steps-list">
+                            <div class="step-row">
+                                <span class="step-num">1.</span>
+                                <input type="text" class="step-input" placeholder="Descreva o step...">
+                                <button class="btn-remove-step" title="Remover step">&times;</button>
+                            </div>
+                        </div>
+                        <button class="btn-add-step">+ Adicionar Step</button>
+                    </div>
+                </div>
+                <button class="btn-add-tc" id="btn-add-test">+ Adicionar Caso de Teste</button>
+            </div>
+
+            <!-- Tab: Colar Texto -->
+            <div class="tab-content" id="tab-text">
+                <textarea id="raw-text" rows="16" placeholder="Cole seus casos de teste aqui...
+
+Formato esperado:
+TEST-001 - Nome do Teste
+Crie um contato
+Inicie uma chamada de voz
+Verifique o ícone de HD
+
+TEST-002 - Outro Teste
+Crie um contato
+Inicie uma chamada de voz
+Faça upgrade para vídeo
+Verifique que o vídeo aparece"></textarea>
+            </div>
+
+            <!-- Tab: Upload Arquivo -->
+            <div class="tab-content" id="tab-file">
+                <div class="file-upload-area" id="drop-zone">
+                    <p>Arraste um arquivo aqui ou clique para selecionar</p>
+                    <p class="file-hint">Formatos: CSV, Excel (.xlsx), JSON, TXT</p>
+                    <input type="file" id="file-input" accept=".csv,.xlsx,.xls,.json,.txt" hidden>
+                    <p class="file-name" id="file-name"></p>
+                </div>
+            </div>
+
+            <button class="btn-optimize" id="btn-optimize">Otimizar Sequência</button>
+        </section>
+
+        <!-- Resultado -->
+        <section class="result-section" id="result-section" style="display:none;">
+            <h2>Sequência Otimizada</h2>
+
+            <div class="stats-bar" id="stats-bar"></div>
+
+            <div class="optimized-list" id="optimized-list"></div>
+
+            <div class="original-tests" id="original-tests">
+                <h3>Testes Originais</h3>
+                <div id="original-tests-list"></div>
+            </div>
+        </section>
+
+        <!-- Loading -->
+        <div class="loading-overlay" id="loading" style="display:none;">
+            <div class="spinner"></div>
+            <p>Analisando e otimizando com IA...</p>
+        </div>
+
+        <!-- Erro -->
+        <div class="error-banner" id="error-banner" style="display:none;">
+            <span id="error-message"></span>
+            <button class="btn-close-error" id="btn-close-error">&times;</button>
+        </div>
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

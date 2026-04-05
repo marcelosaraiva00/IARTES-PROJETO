@@ -21,7 +21,7 @@ class StepCache:
     def __init__(self, provider_name: str):
         self._provider = provider_name
         self._pending_norms: list[tuple[str, str, str]] = []
-        self._pending_classes: list[tuple[str, str, bool]] = []
+        self._pending_classes: list[tuple[str, str, bool, str]] = []
 
     def get_normalization(self, original_text: str) -> dict | None:
         hit = kb_get_normalization(original_text, provider=self._provider)
@@ -40,16 +40,23 @@ class StepCache:
     def get_classification(self, normalized_id: str) -> dict | None:
         hit = kb_get_classification(normalized_id, provider=self._provider)
         if hit:
-            return {"step_type": hit["step_type"], "is_destructive": hit["is_destructive"]}
+            out = {"step_type": hit["step_type"], "is_destructive": hit["is_destructive"]}
+            if hit.get("normalized_text"):
+                out["normalized_text"] = hit["normalized_text"]
+            return out
         hit = kb_get_classification(normalized_id, provider=None)
         if hit:
-            return {"step_type": hit["step_type"], "is_destructive": hit["is_destructive"]}
+            out = {"step_type": hit["step_type"], "is_destructive": hit["is_destructive"]}
+            if hit.get("normalized_text"):
+                out["normalized_text"] = hit["normalized_text"]
+            return out
         return None
 
-    def set_classification(self, normalized_id: str, info: dict) -> None:
+    def set_classification(self, normalized_id: str, info: dict, *, normalized_text: str = "") -> None:
         step_type = info.get("step_type", "action")
         is_destructive = bool(info.get("is_destructive", False))
-        self._pending_classes.append((normalized_id, step_type, is_destructive))
+        text = normalized_text or (info.get("normalized_text") or "")
+        self._pending_classes.append((normalized_id, step_type, is_destructive, text))
 
     def save(self) -> None:
         if self._pending_norms:

@@ -34,12 +34,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function filterClasses(q) {
         if (!q) return allClassifications;
-        return allClassifications.filter(
-            (c) =>
-                c.normalized_id.toLowerCase().includes(q) ||
+        return allClassifications.filter((c) => {
+            const nt = (c.normalized_text || "").toLowerCase();
+            const nid = (c.normalized_id || "").toLowerCase();
+            return (
+                nt.includes(q) ||
+                nid.includes(q) ||
                 c.step_type.toLowerCase().includes(q) ||
                 c.provider.toLowerCase().includes(q)
-        );
+            );
+        });
     }
 
     function providerBadge(provider) {
@@ -97,15 +101,17 @@ document.addEventListener("DOMContentLoaded", () => {
         empty.style.display = "none";
 
         tbody.innerHTML = items
-            .map(
-                (c) => `<tr>
-                <td><code>${escapeHtml(c.normalized_id)}</code></td>
+            .map((c) => {
+                const label = c.normalized_text || c.normalized_id || "—";
+                return `<tr>
+                <td title="${escapeHtml(c.normalized_id)}">${escapeHtml(label)}</td>
+                <td><code class="tree-nid">${escapeHtml(c.normalized_id)}</code></td>
                 <td class="${c.step_type === "verification" ? "type-verification" : "type-action"}">${c.step_type === "verification" ? "Verificação" : "Ação"}</td>
                 <td class="${c.is_destructive ? "destructive-yes" : "destructive-no"}">${c.is_destructive ? "Sim" : "Não"}</td>
                 <td>${providerBadge(c.provider)}</td>
                 <td>${formatDate(c.created_at)}</td>
-            </tr>`
-            )
+            </tr>`;
+            })
             .join("");
     }
 

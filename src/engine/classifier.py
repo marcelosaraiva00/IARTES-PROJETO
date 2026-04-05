@@ -103,13 +103,13 @@ def classify_steps(
         result = llm.complete_json(prompt)
         classifications = result.get("classifications", {}) if isinstance(result, dict) else {}
 
-        for nid, _text in batch:
+        for nid, display_text in batch:
             info = _normalize_classification(
                 classifications.get(nid, {"step_type": "action", "is_destructive": False})
             )
             all_classifications[nid] = info
             if cache:
-                cache.set_classification(nid, info)
+                cache.set_classification(nid, info, normalized_text=display_text)
 
     for tc in test_cases:
         for step in tc.steps:

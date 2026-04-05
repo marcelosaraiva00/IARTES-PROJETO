@@ -31,10 +31,20 @@ def get_connection():
         conn.close()
 
 
+def _migrate_schema(conn: sqlite3.Connection) -> None:
+    """Adiciona colunas novas em bancos já existentes."""
+    cols = {row[1] for row in conn.execute("PRAGMA table_info(classification_cache)")}
+    if cols and "normalized_text" not in cols:
+        conn.execute(
+            "ALTER TABLE classification_cache ADD COLUMN normalized_text TEXT NOT NULL DEFAULT ''"
+        )
+
+
 def init_db() -> None:
     """Cria as tabelas se não existirem."""
     with get_connection() as conn:
         conn.executescript(_SCHEMA)
+        _migrate_schema(conn)
 
 
 _SCHEMA = """
@@ -67,12 +77,13 @@ CREATE TABLE IF NOT EXISTS normalization_cache (
 );
 
 CREATE TABLE IF NOT EXISTS classification_cache (
-    id              INTEGER PRIMARY KEY AUTOINCREMENT,
-    provider        TEXT NOT NULL,
-    normalized_id   TEXT NOT NULL,
-    step_type       TEXT NOT NULL,
-    is_destructive  INTEGER NOT NULL DEFAULT 0,
-    created_at      TEXT NOT NULL DEFAULT (datetime('now')),
+    id               INTEGER PRIMARY KEY AUTOINCREMENT,
+    provider         TEXT NOT NULL,
+    normalized_id    TEXT NOT NULL,
+    step_type        TEXT NOT NULL,
+    is_destructive   INTEGER NOT NULL DEFAULT 0,
+    normalized_text  TEXT NOT NULL DEFAULT '',
+    created_at       TEXT NOT NULL DEFAULT (datetime('now')),
     UNIQUE(provider, normalized_id)
 );
 
@@ -223,17 +234,19 @@ def kb_save_classification(
     normalized_id: str,
     step_type: str,
     is_destructive: bool,
+    normalized_text: str = "",
 ) -> None:
     with get_connection() as conn:
         conn.execute(
             """INSERT INTO classification_cache
-               (provider, normalized_id, step_type, is_destructive)
-               VALUES (?, ?, ?, ?)
+               (provider, normalized_id, step_type, is_destructive, normalized_text)
+               VALUES (?, ?, ?, ?, ?)
                ON CONFLICT(provider, normalized_id) DO UPDATE SET
                  step_type = excluded.step_type,
                  is_destructive = excluded.is_destructive,
+                 normalized_text = excluded.normalized_text,
                  created_at = datetime('now')""",
-            (provider, normalized_id, step_type, int(is_destructive)),
+            (provider, normalized_id, step_type, int(is_destructive), normalized_text or ""),
         )
 
 
@@ -242,21 +255,25 @@ def kb_get_classification(normalized_id: str, provider: str | None = None) -> di
     with get_connection() as conn:
         if provider:
             row = conn.execute(
-                "SELECT step_type, is_destructive, provider FROM classification_cache WHERE normalized_id = ? AND provider = ?",
+                "SELECT step_type, is_destructive, provider, normalized_text FROM classification_cache WHERE normalized_id = ? AND provider = ?",
                 (normalized_id, provider),
             ).fetchone()
         else:
             row = conn.execute(
-                "SELECT step_type, is_destructive, provider FROM classification_cache WHERE normalized_id = ? ORDER BY created_at DESC LIMIT 1",
+                "SELECT step_type, is_destructive, provider, normalized_text FROM classification_cache WHERE normalized_id = ? ORDER BY created_at DESC LIMIT 1",
                 (normalized_id,),
             ).fetchone()
         if row is None:
             return None
-        return {
+        out = {
             "step_type": row["step_type"],
             "is_destructive": bool(row["is_destructive"]),
             "source_provider": row["provider"],
         }
+        nt = row["normalized_text"] if "normalized_text" in row.keys() else ""
+        if nt:
+            out["normalized_text"] = nt
+        return out
 
 
 def kb_save_normalizations_batch(
@@ -280,20 +297,21 @@ def kb_save_normalizations_batch(
 
 def kb_save_classifications_batch(
     provider: str,
-    classifications: list[tuple[str, str, bool]],
+    classifications: list[tuple[str, str, bool, str]],
 ) -> None:
-    """Salva múltiplas classificações. Cada tuple: (normalized_id, step_type, is_destructive)."""
+    """Salva múltiplas classificações. Cada tuple: (normalized_id, step_type, is_destructive, normalized_text)."""
     with get_connection() as conn:
-        for normalized_id, step_type, is_destructive in classifications:
+        for normalized_id, step_type, is_destructive, norm_text in classifications:
             conn.execute(
                 """INSERT INTO classification_cache
-                   (provider, normalized_id, step_type, is_destructive)
-                   VALUES (?, ?, ?, ?)
+                   (provider, normalized_id, step_type, is_destructive, normalized_text)
+                   VALUES (?, ?, ?, ?, ?)
                    ON CONFLICT(provider, normalized_id) DO UPDATE SET
                      step_type = excluded.step_type,
                      is_destructive = excluded.is_destructive,
+                     normalized_text = excluded.normalized_text,
                      created_at = datetime('now')""",
-                (provider, normalized_id, step_type, int(is_destructive)),
+                (provider, normalized_id, step_type, int(is_destructive), norm_text or ""),
             )
 
 
@@ -309,12 +327,32 @@ def kb_get_all_normalizations(limit: int = 500) -> list[dict]:
 def kb_get_all_classifications(limit: int = 500) -> list[dict]:
     with get_connection() as conn:
         rows = conn.execute(
-            "SELECT provider, normalized_id, step_type, is_destructive, created_at FROM classification_cache ORDER BY created_at DESC LIMIT ?",
+            """
+            SELECT c.provider, c.normalized_id, c.step_type, c.is_destructive, c.created_at,
+                   COALESCE(
+                     NULLIF(TRIM(c.normalized_text), ''),
+                     (SELECT n.normalized_text FROM normalization_cache n
+                      WHERE n.normalized_id = c.normalized_id
+                      ORDER BY n.created_at DESC LIMIT 1),
+                     c.normalized_id
+                   ) AS display_text
+            FROM classification_cache c
+            ORDER BY c.created_at DESC
+            LIMIT ?
+            """,
             (limit,),
         ).fetchall()
-        return [{"provider": r["provider"], "normalized_id": r["normalized_id"],
-                 "step_type": r["step_type"], "is_destructive": bool(r["is_destructive"]),
-                 "created_at": r["created_at"]} for r in rows]
+        return [
+            {
+                "provider": r["provider"],
+                "normalized_id": r["normalized_id"],
+                "normalized_text": r["display_text"],
+                "step_type": r["step_type"],
+                "is_destructive": bool(r["is_destructive"]),
+                "created_at": r["created_at"],
+            }
+            for r in rows
+        ]
 
 
 def kb_get_stats() -> dict:

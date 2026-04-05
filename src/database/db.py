@@ -164,3 +164,180 @@ def get_history() -> list[dict]:
             LIMIT 100
         """).fetchall()
         return [dict(row) for row in rows]
+
+
+# ---------------------------------------------------------------------------
+# Knowledge Base -- normalização e classificação persistentes
+# ---------------------------------------------------------------------------
+
+def _step_hash(text: str) -> str:
+    import hashlib
+    return hashlib.md5(text.strip().lower().encode()).hexdigest()
+
+
+def kb_save_normalization(
+    provider: str,
+    original_text: str,
+    normalized_id: str,
+    normalized_text: str,
+) -> None:
+    h = _step_hash(original_text)
+    with get_connection() as conn:
+        conn.execute(
+            """INSERT INTO normalization_cache
+               (provider, step_hash, original_text, normalized_id, normalized_text)
+               VALUES (?, ?, ?, ?, ?)
+               ON CONFLICT(provider, step_hash) DO UPDATE SET
+                 normalized_id = excluded.normalized_id,
+                 normalized_text = excluded.normalized_text,
+                 created_at = datetime('now')""",
+            (provider, h, original_text, normalized_id, normalized_text),
+        )
+
+
+def kb_get_normalization(original_text: str, provider: str | None = None) -> dict | None:
+    """Busca normalização na KB. Se provider=None, retorna a mais recente de qualquer provider."""
+    h = _step_hash(original_text)
+    with get_connection() as conn:
+        if provider:
+            row = conn.execute(
+                "SELECT normalized_id, normalized_text, provider FROM normalization_cache WHERE step_hash = ? AND provider = ?",
+                (h, provider),
+            ).fetchone()
+        else:
+            row = conn.execute(
+                "SELECT normalized_id, normalized_text, provider FROM normalization_cache WHERE step_hash = ? ORDER BY created_at DESC LIMIT 1",
+                (h,),
+            ).fetchone()
+        if row is None:
+            return None
+        return {
+            "normalized_id": row["normalized_id"],
+            "normalized_text": row["normalized_text"],
+            "source_provider": row["provider"],
+        }
+
+
+def kb_save_classification(
+    provider: str,
+    normalized_id: str,
+    step_type: str,
+    is_destructive: bool,
+) -> None:
+    with get_connection() as conn:
+        conn.execute(
+            """INSERT INTO classification_cache
+               (provider, normalized_id, step_type, is_destructive)
+               VALUES (?, ?, ?, ?)
+               ON CONFLICT(provider, normalized_id) DO UPDATE SET
+                 step_type = excluded.step_type,
+                 is_destructive = excluded.is_destructive,
+                 created_at = datetime('now')""",
+            (provider, normalized_id, step_type, int(is_destructive)),
+        )
+
+
+def kb_get_classification(normalized_id: str, provider: str | None = None) -> dict | None:
+    """Busca classificação na KB. Se provider=None, retorna a mais recente."""
+    with get_connection() as conn:
+        if provider:
+            row = conn.execute(
+                "SELECT step_type, is_destructive, provider FROM classification_cache WHERE normalized_id = ? AND provider = ?",
+                (normalized_id, provider),
+            ).fetchone()
+        else:
+            row = conn.execute(
+                "SELECT step_type, is_destructive, provider FROM classification_cache WHERE normalized_id = ? ORDER BY created_at DESC LIMIT 1",
+                (normalized_id,),
+            ).fetchone()
+        if row is None:
+            return None
+        return {
+            "step_type": row["step_type"],
+            "is_destructive": bool(row["is_destructive"]),
+            "source_provider": row["provider"],
+        }
+
+
+def kb_save_normalizations_batch(
+    provider: str,
+    mappings: list[tuple[str, str, str]],
+) -> None:
+    """Salva múltiplas normalizações de uma vez. Cada tuple: (original_text, normalized_id, normalized_text)."""
+    with get_connection() as conn:
+        for original_text, normalized_id, normalized_text in mappings:
+            conn.execute(
+                """INSERT INTO normalization_cache
+                   (provider, step_hash, original_text, normalized_id, normalized_text)
+                   VALUES (?, ?, ?, ?, ?)
+                   ON CONFLICT(provider, step_hash) DO UPDATE SET
+                     normalized_id = excluded.normalized_id,
+                     normalized_text = excluded.normalized_text,
+                     created_at = datetime('now')""",
+                (provider, _step_hash(original_text), original_text, normalized_id, normalized_text),
+            )
+
+
+def kb_save_classifications_batch(
+    provider: str,
+    classifications: list[tuple[str, str, bool]],
+) -> None:
+    """Salva múltiplas classificações. Cada tuple: (normalized_id, step_type, is_destructive)."""
+    with get_connection() as conn:
+        for normalized_id, step_type, is_destructive in classifications:
+            conn.execute(
+                """INSERT INTO classification_cache
+                   (provider, normalized_id, step_type, is_destructive)
+                   VALUES (?, ?, ?, ?)
+                   ON CONFLICT(provider, normalized_id) DO UPDATE SET
+                     step_type = excluded.step_type,
+                     is_destructive = excluded.is_destructive,
+                     created_at = datetime('now')""",
+                (provider, normalized_id, step_type, int(is_destructive)),
+            )
+
+
+def kb_get_all_normalizations(limit: int = 500) -> list[dict]:
+    with get_connection() as conn:
+        rows = conn.execute(
+            "SELECT provider, original_text, normalized_id, normalized_text, created_at FROM normalization_cache ORDER BY created_at DESC LIMIT ?",
+            (limit,),
+        ).fetchall()
+        return [dict(row) for row in rows]
+
+
+def kb_get_all_classifications(limit: int = 500) -> list[dict]:
+    with get_connection() as conn:
+        rows = conn.execute(
+            "SELECT provider, normalized_id, step_type, is_destructive, created_at FROM classification_cache ORDER BY created_at DESC LIMIT ?",
+            (limit,),
+        ).fetchall()
+        return [{"provider": r["provider"], "normalized_id": r["normalized_id"],
+                 "step_type": r["step_type"], "is_destructive": bool(r["is_destructive"]),
+                 "created_at": r["created_at"]} for r in rows]
+
+
+def kb_get_stats() -> dict:
+    with get_connection() as conn:
+        norm_total = conn.execute("SELECT COUNT(*) as c FROM normalization_cache").fetchone()["c"]
+        class_total = conn.execute("SELECT COUNT(*) as c FROM classification_cache").fetchone()["c"]
+
+        norm_by_provider = conn.execute(
+            "SELECT provider, COUNT(*) as c FROM normalization_cache GROUP BY provider"
+        ).fetchall()
+        class_by_provider = conn.execute(
+            "SELECT provider, COUNT(*) as c FROM classification_cache GROUP BY provider"
+        ).fetchall()
+
+        return {
+            "normalizations_total": norm_total,
+            "classifications_total": class_total,
+            "normalizations_by_provider": {r["provider"]: r["c"] for r in norm_by_provider},
+            "classifications_by_provider": {r["provider"]: r["c"] for r in class_by_provider},
+        }
+
+
+def kb_clear() -> None:
+    with get_connection() as conn:
+        conn.execute("DELETE FROM normalization_cache")
+        conn.execute("DELETE FROM classification_cache")

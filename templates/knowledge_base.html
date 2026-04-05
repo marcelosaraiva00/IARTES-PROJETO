@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IARTES - Base de Conhecimento</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/knowledge_base.css">
+</head>
+<body>
+    <header>
+        <h1>IARTES</h1>
+        <p class="subtitle">Base de Conhecimento -- Aprendizado Incremental</p>
+        <nav class="nav-links">
+            <a href="/">Otimizador</a>
+            <a href="/benchmark">Benchmark</a>
+            <a href="/knowledge-base" class="active">Base de Conhecimento</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="kb-stats-section" id="kb-stats-section">
+            <h2>Estatísticas da Base</h2>
+            <div class="stats-bar" id="kb-stats-bar">
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-norm-total">--</div>
+                    <div class="stat-label">Normalizações</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-class-total">--</div>
+                    <div class="stat-label">Classificações</div>
+                </div>
+            </div>
+            <div class="kb-provider-breakdown" id="kb-provider-breakdown"></div>
+        </section>
+
+        <section class="kb-data-section">
+            <div class="kb-tabs">
+                <button class="kb-tab active" data-kb-tab="normalizations">Normalizações</button>
+                <button class="kb-tab" data-kb-tab="classifications">Classificações</button>
+            </div>
+
+            <div class="kb-search-bar">
+                <input type="text" id="kb-search" placeholder="Buscar na base de conhecimento...">
+            </div>
+
+            <div class="kb-tab-content active" id="kb-tab-normalizations">
+                <div class="kb-table-wrapper">
+                    <table class="kb-table" id="norm-table">
+                        <thead>
+                            <tr>
+                                <th>Texto Original</th>
+                                <th>ID Normalizado</th>
+                                <th>Texto Normalizado</th>
+                                <th>Provider</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody id="norm-tbody"></tbody>
+                    </table>
+                </div>
+                <p class="kb-empty" id="norm-empty" style="display:none;">Nenhuma normalização registrada ainda. Execute uma otimização para popular a base.</p>
+            </div>
+
+            <div class="kb-tab-content" id="kb-tab-classifications">
+                <div class="kb-table-wrapper">
+                    <table class="kb-table" id="class-table">
+                        <thead>
+                            <tr>
+                                <th>ID Normalizado</th>
+                                <th>Tipo</th>
+                                <th>Destrutivo</th>
+                                <th>Provider</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody id="class-tbody"></tbody>
+                    </table>
+                </div>
+                <p class="kb-empty" id="class-empty" style="display:none;">Nenhuma classificação registrada ainda. Execute uma otimização para popular a base.</p>
+            </div>
+        </section>
+
+        <section class="kb-actions-section">
+            <button class="btn-refresh" id="btn-refresh">Atualizar Dados</button>
+            <button class="btn-clear-kb" id="btn-clear-kb">Limpar Base de Conhecimento</button>
+        </section>
+
+        <div class="loading-overlay" id="loading" style="display:none;">
+            <div class="spinner"></div>
+            <p>Carregando base de conhecimento...</p>
+        </div>
+
+        <div class="error-banner" id="error-banner" style="display:none;">
+            <span id="error-message"></span>
+            <button class="btn-close-error" id="btn-close-error">&times;</button>
+        </div>
+    </main>
+
+    <script src="/static/knowledge_base.js"></script>
+</body>
+</html>

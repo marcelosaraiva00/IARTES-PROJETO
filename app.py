@@ -7,6 +7,10 @@ from src.database.db import (
     get_history,
     get_runs_for_suite,
     init_db,
+    kb_clear,
+    kb_get_all_classifications,
+    kb_get_all_normalizations,
+    kb_get_stats,
     list_suites,
     save_optimization_run,
     save_suite,
@@ -232,6 +236,44 @@ def export_benchmark_data(suite_id: int):
         mimetype="text/csv",
         headers={"Content-Disposition": f"attachment; filename=benchmark_suite_{suite_id}.csv"},
     )
+
+
+@app.route("/knowledge-base")
+def knowledge_base_page():
+    return render_template("knowledge_base.html")
+
+
+@app.route("/api/knowledge-base")
+def knowledge_base_data():
+    """Retorna normalizações e classificações da KB."""
+    try:
+        normalizations = kb_get_all_normalizations(limit=1000)
+        classifications = kb_get_all_classifications(limit=1000)
+        return jsonify({
+            "normalizations": normalizations,
+            "classifications": classifications,
+        })
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/knowledge-base/stats")
+def knowledge_base_stats():
+    """Retorna estatísticas da KB."""
+    try:
+        return jsonify(kb_get_stats())
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/knowledge-base", methods=["DELETE"])
+def knowledge_base_clear():
+    """Limpa toda a base de conhecimento."""
+    try:
+        kb_clear()
+        return jsonify({"status": "ok", "message": "Base de conhecimento limpa com sucesso."})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 def _parse_request_test_cases() -> list:

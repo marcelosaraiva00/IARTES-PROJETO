@@ -215,8 +215,13 @@ _STOPWORDS = {
 
 
 class LocalProvider(LLMProvider):
-    """Provider local que funciona sem API, usando classificação BB8
-    e normalização semântica por verbo+objeto."""
+    """Provider local que funciona sem API, usando classificação BB8,
+    normalização semântica por verbo+objeto, e Knowledge Base persistente.
+
+    Ordem de resolução:
+    1. Consulta a KB no SQLite (aprendizado de execuções anteriores)
+    2. Se não encontrou, aplica heurísticas BB8
+    """
 
     def complete(self, prompt: str, *, system_prompt: str = "") -> str:
         return ""
@@ -229,6 +234,8 @@ class LocalProvider(LLMProvider):
         return {}
 
     def _handle_normalization(self, prompt: str) -> dict:
+        from src.database.db import kb_get_normalization
+
         for marker in ("STEPS TO NORMALIZE:", "STEPS PARA NORMALIZAR:"):
             if marker in prompt:
                 raw = prompt.split(marker)[-1]
@@ -238,6 +245,29 @@ class LocalProvider(LLMProvider):
         lines = raw.strip().splitlines()
         steps = [line.strip().lstrip("- ").strip() for line in lines if line.strip().startswith("-")]
 
+        mappings = {}
+        unknown_steps: list[str] = []
+        unknown_indices: list[int] = []
+
+        for i, step in enumerate(steps):
+            kb_hit = kb_get_normalization(step)
+            if kb_hit:
+                mappings[step] = {
+                    "normalized_id": kb_hit["normalized_id"],
+                    "normalized_text": kb_hit["normalized_text"],
+                }
+            else:
+                unknown_steps.append(step)
+                unknown_indices.append(i)
+
+        if unknown_steps:
+            heuristic_mappings = self._normalize_by_heuristics(unknown_steps)
+            mappings.update(heuristic_mappings)
+
+        return {"mappings": mappings}
+
+    def _normalize_by_heuristics(self, steps: list[str]) -> dict:
+        """Normaliza steps usando assinaturas semânticas BB8 (fallback quando KB não tem)."""
         signatures: list[tuple[str, str, str]] = []
         for step in steps:
             signatures.append(_extract_signature(step))
@@ -275,9 +305,11 @@ class LocalProvider(LLMProvider):
                     "normalized_text": rep,
                 }
 
-        return {"mappings": mappings}
+        return mappings
 
     def _handle_classification(self, prompt: str) -> dict:
+        from src.database.db import kb_get_classification
+
         for marker in ("STEPS TO CLASSIFY:", "STEPS PARA CLASSIFICAR:"):
             if marker in prompt:
                 raw = prompt.split(marker)[-1]
@@ -298,6 +330,15 @@ class LocalProvider(LLMProvider):
 
             nid = match.group(1)
             text = match.group(2)
+
+            kb_hit = kb_get_classification(nid)
+            if kb_hit:
+                classifications[nid] = {
+                    "step_type": kb_hit["step_type"],
+                    "is_destructive": kb_hit["is_destructive"],
+                    "reasoning": f"KB (via {kb_hit['source_provider']})",
+                }
+                continue
 
             group_name, is_verif, is_destr = _classify_step(text)
 

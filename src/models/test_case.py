@@ -53,6 +53,7 @@ class OptimizationResult:
     optimized_sequence: list[OptimizedStep] = field(default_factory=list)
     original_test_cases: list[TestCase] = field(default_factory=list)
     metrics: Optional[dict] = None
+    trie_tree: Optional[dict] = None
 
     @property
     def original_step_count(self) -> int:
@@ -86,7 +87,7 @@ class OptimizationResult:
             }
             sequence.append(entry)
 
-        return {
+        out = {
             "optimized_sequence": sequence,
             "stats": {
                 "original_step_count": self.original_step_count,
@@ -101,3 +102,6 @@ class OptimizationResult:
                 for tc in self.original_test_cases
             ],
         }
+        if self.trie_tree is not None:
+            out["trie_tree"] = self.trie_tree
+        return out

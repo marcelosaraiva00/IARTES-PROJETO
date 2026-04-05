@@ -226,6 +226,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         renderMetrics(data.metrics);
 
+        const treePanel = document.getElementById("tree-panel");
+        const treeContainer = document.getElementById("tree-container");
+        if (data.trie_tree && typeof appendTrieTree === "function") {
+            treePanel.style.display = "block";
+            appendTrieTree(treeContainer, data.trie_tree);
+        } else {
+            treePanel.style.display = "none";
+            if (treeContainer) treeContainer.innerHTML = "";
+        }
+
         const listEl = document.getElementById("optimized-list");
         listEl.innerHTML = "";
 
@@ -247,6 +257,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             if (item.step_type === "verification") {
                 badges += `<span class="badge badge-type">Verificação</span>`;
+            } else {
+                badges += `<span class="badge badge-action">Ação</span>`;
             }
             if (item.is_destructive) {
                 badges += `<span class="badge badge-destructive">Destrutivo</span>`;

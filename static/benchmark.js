@@ -127,6 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
                 if (item.is_resetup) badges += `<span class="badge badge-resetup">Re-setup</span>`;
                 if (item.step_type === "verification") badges += `<span class="badge badge-type">Verificação</span>`;
+                else badges += `<span class="badge badge-action">Ação</span>`;
                 if (item.is_destructive) badges += `<span class="badge badge-destructive">Destrutivo</span>`;
 
                 stepsHtml += `
@@ -138,6 +139,25 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             const stats = run.result.stats;
+            let treeBlock = "";
+            if (run.result.trie_tree && typeof appendTrieTree === "function") {
+                const treeId = `bm-tree-${run.provider.replace(/\W/g, "")}`;
+                treeBlock = `
+                    <details class="tree-panel bm-tree-panel">
+                        <summary>Árvore de prefixos</summary>
+                        <p class="tree-panel-hint">Mesma estrutura da página principal: ramos compartilhados e ordem dos filhos alinhada ao otimizador.</p>
+                        <div class="tree-scroll" id="${treeId}"></div>
+                    </details>`;
+                container.appendChild(panel);
+                panel.innerHTML = `
+                    <h3>${run.provider.charAt(0).toUpperCase() + run.provider.slice(1)} (${stats.reduction_percent}% redução, ${Math.round(run.elapsed_ms)}ms)</h3>
+                    ${treeBlock}
+                    ${stepsHtml}
+                `;
+                const treeEl = document.getElementById(treeId);
+                if (treeEl) appendTrieTree(treeEl, run.result.trie_tree);
+                return;
+            }
             panel.innerHTML = `
                 <h3>${run.provider.charAt(0).toUpperCase() + run.provider.slice(1)} (${stats.reduction_percent}% redução, ${Math.round(run.elapsed_ms)}ms)</h3>
                 ${stepsHtml}

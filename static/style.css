@@ -345,6 +345,88 @@ button {
     margin-top: 0.15rem;
 }
 
+/* --- Trie / tree visualization --- */
+.tree-panel {
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.tree-panel summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--accent);
+    user-select: none;
+}
+
+.tree-panel-hint {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin: 0.75rem 0 0.5rem;
+    line-height: 1.5;
+}
+
+.tree-scroll {
+    max-height: min(520px, 70vh);
+    overflow: auto;
+    margin-top: 0.5rem;
+    padding-right: 0.25rem;
+}
+
+.tree-node-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    padding: 0.4rem 0;
+    font-size: 0.88rem;
+}
+
+.tree-root-label {
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.tree-meta {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.tree-step-text {
+    flex: 1 1 200px;
+    min-width: 0;
+}
+
+.tree-nid {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    background: var(--bg);
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+}
+
+.tree-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    align-items: center;
+}
+
+.tree-children {
+    border-left: 2px solid var(--border);
+    margin-left: 0.6rem;
+    padding-left: 0.85rem;
+    margin-top: 0.15rem;
+}
+
+.tree-node:first-child > .tree-node-line {
+    padding-top: 0.15rem;
+}
+
 /* --- Metrics panel --- */
 .metrics-panel {
     background: var(--bg-input);
@@ -469,6 +551,12 @@ button {
     background: rgba(56, 189, 248, 0.1);
     color: var(--verification);
     border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.badge-action {
+    background: rgba(148, 163, 184, 0.12);
+    color: #94a3b8;
+    border: 1px solid rgba(148, 163, 184, 0.28);
 }
 
 .badge-destructive {

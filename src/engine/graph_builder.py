@@ -112,3 +112,27 @@ def _absorb_validations(target: TrieNode, source: TrieNode) -> None:
             _absorb_validations(target.children[nid], src_child)
         else:
             target.children[nid] = src_child
+
+
+def serialize_trie_for_visualization(root: TrieNode) -> dict:
+    """Converte a trie em estrutura JSON para a UI (árvore).
+
+    Filhos na mesma ordem usada pelo otimizador (DFS), para a árvore refletir
+    a prioridade de branches.
+    """
+    from src.engine.optimizer import _child_sort_key
+
+    def walk(node: TrieNode) -> dict:
+        children_sorted = sorted(node.children.values(), key=_child_sort_key)
+        step = node.step
+        return {
+            "normalized_id": node.normalized_id,
+            "step_text": step.display_text() if step else None,
+            "original_text": step.original_text if step else None,
+            "step_type": step.step_type.value if step else None,
+            "is_destructive": step.is_destructive if step else False,
+            "validates_tests": list(node.validates_tests),
+            "children": [walk(ch) for ch in children_sorted],
+        }
+
+    return walk(root)

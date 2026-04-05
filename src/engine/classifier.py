@@ -54,6 +54,14 @@ STEPS TO CLASSIFY:
 BATCH_SIZE = 40
 
 
+def _normalize_classification(info: dict) -> dict:
+    """Garante regra do domínio: verificação nunca é destrutiva (corrige LLM/KB antiga)."""
+    out = dict(info)
+    if out.get("step_type") == "verification":
+        out["is_destructive"] = False
+    return out
+
+
 def classify_steps(
     test_cases: list[TestCase],
     llm: LLMProvider,
@@ -81,7 +89,7 @@ def classify_steps(
         if cache:
             hit = cache.get_classification(nid)
             if hit:
-                cached[nid] = hit
+                cached[nid] = _normalize_classification(hit)
                 continue
         uncached[nid] = text
 
@@ -96,7 +104,9 @@ def classify_steps(
         classifications = result.get("classifications", {}) if isinstance(result, dict) else {}
 
         for nid, _text in batch:
-            info = classifications.get(nid, {"step_type": "action", "is_destructive": False})
+            info = _normalize_classification(
+                classifications.get(nid, {"step_type": "action", "is_destructive": False})
+            )
             all_classifications[nid] = info
             if cache:
                 cache.set_classification(nid, info)
@@ -105,7 +115,7 @@ def classify_steps(
         for step in tc.steps:
             nid = step.normalized_id
             if nid and nid in all_classifications:
-                info = all_classifications[nid]
+                info = _normalize_classification(all_classifications[nid])
                 raw_type = info.get("step_type", "action")
                 step.step_type = (
                     StepType.VERIFICATION if raw_type == "verification" else StepType.ACTION

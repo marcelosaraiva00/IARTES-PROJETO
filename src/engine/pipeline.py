@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from src.engine.cache import StepCache
 from src.engine.classifier import classify_steps
-from src.engine.graph_builder import build_prefix_trie
+from src.engine.graph_builder import build_prefix_trie, serialize_trie_for_visualization
 from src.engine.marker import build_optimization_result
 from src.engine.metrics import compute_metrics
 from src.engine.normalizer import normalize_steps
@@ -36,6 +36,7 @@ def run_optimization_pipeline(
     trie_root = build_prefix_trie(test_cases)
     optimized = optimize_sequence(trie_root)
     result = build_optimization_result(optimized, test_cases)
+    result.trie_tree = serialize_trie_for_visualization(trie_root)
 
     metrics = compute_metrics(result)
     result.metrics = metrics.to_dict()

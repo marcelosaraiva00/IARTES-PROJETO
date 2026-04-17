@@ -1,0 +1,96 @@
+TEST-001 - Widgets na Tela Inicial
+Toque e segure em uma área vazia da tela inicial
+Toque em Widgets
+Selecione o widget Relógio digital em tamanho médio
+Posicione o widget na primeira página inicial
+Verifique que o relógio exibe a hora correta
+Redimensione o widget para o tamanho grande
+Verifique que o layout se ajusta sem sobrepor ícones
+
+TEST-002 - Gravação de Tela com Áudio do Sistema
+Abra o painel de configurações rápidas
+Toque em Gravar tela
+Ative a captura de áudio do sistema
+Inicie a gravação
+Abra o aplicativo de Música e reproduza uma faixa curta
+Pare a gravação pela notificação
+Abra o aplicativo Galeria
+Reproduza o vídeo gravado e verifique que o áudio da faixa está presente
+
+TEST-003 - Lanterna e Atalhos do Painel Rápido
+Abra o painel de configurações rápidas
+Ative o ícone da Lanterna
+Verifique que o LED traseiro permanece aceso
+Edite os atalhos do painel rápido
+Adicione o atalho Gravador de tela se não estiver visível
+Salve a ordem dos atalhos
+Desative a Lanterna
+Verifique que o LED se apaga
+
+TEST-004 - Assistente de Voz e Comando por Voz
+Abra o aplicativo Configurações
+Navegue até as configurações do Assistente de voz
+Ative o acionamento por palavra de ativação em ambiente de teste
+Diga o comando de ativação seguido de "que horas são"
+Verifique que o assistente responde com a hora atual
+Abra o assistente e peça para "abrir o aplicativo Calendário"
+Verifique que o Calendário é aberto
+Desative o acionamento por voz para não permanecer ativo
+
+TEST-005 - Modo Leitura no Navegador
+Abra o aplicativo Navegador
+Acesse um artigo de notícias com muitos parágrafos
+Ative o modo Leitura ou visualização simplificada
+Verifique que anúncios e menus laterais somem do conteúdo
+Ajuste o tamanho da fonte no modo leitura
+Verifique que o texto reflowa sem cortar parágrafos
+Saia do modo leitura e verifique que a página original volta
+
+TEST-006 - Digitalização de Documento com a Câmera
+Abra o aplicativo Câmera ou o fluxo de digitalização de documentos
+Selecione o modo Documento ou Digitalizar
+Aponte para uma folha A4 impressa de teste
+Capture a digitalização
+Ajuste as bordas do documento na pré-visualização
+Salve como PDF ou imagem conforme opção disponível
+Abra o arquivo salvo e verifique que o texto está legível
+
+TEST-007 - Espelhamento de Tela em Dispositivo Sem Fios
+Abra o aplicativo Configurações
+Navegue até as opções de Conexão ou Transmissão de tela
+Ative a transmissão ou espelhamento sem fios
+Selecione o receptor de teste na mesma rede
+Verifique que a tela do telefone aparece no receptor
+Abra o aplicativo Galeria no telefone
+Verifique que a imagem é exibida no receptor com atraso aceitável
+Encerre o espelhamento
+
+TEST-008 - Idioma e Layout do Teclado
+Abra o aplicativo Configurações
+Navegue até as configurações de Idioma e entrada
+Toque em Teclado virtual
+Adicione um segundo layout de teclado de teste
+Abra o aplicativo Mensagens e toque no campo de texto
+Troque para o segundo layout pelo ícone do globo ou barra de espaço
+Digite uma frase curta e verifique os caracteres corretos
+Volte ao layout padrão e remova o teclado de teste se desejado
+
+TEST-009 - Limite de Tempo de Uso por Aplicativo
+Abra o aplicativo Configurações
+Navegue até Bem-estar digital ou Uso de aplicativos
+Selecione o aplicativo de rede social de teste
+Defina um limite diário de 15 minutos
+Abra o aplicativo e use até o limite ser atingido
+Verifique que o aviso de tempo esgotado ou pausa aparece
+Ignore temporariamente por 1 minuto se a opção existir
+Remova ou aumente o limite ao final do teste
+
+TEST-010 - Compactar Arquivos e Anexar no E-mail
+Abra o aplicativo Gerenciador de arquivos ou Arquivos
+Selecione duas imagens de teste na pasta Download
+Toque em Compactar ou Criar arquivo ZIP
+Verifique que o arquivo compactado aparece na mesma pasta
+Abra o aplicativo E-mail
+Redija um novo e-mail de teste
+Anexe o arquivo ZIP criado
+Verifique que o anexo aparece com o tamanho correto antes de enviar

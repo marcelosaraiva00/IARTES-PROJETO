@@ -1,0 +1,175 @@
+TEST-001 - Perfil Infantil e Controle dos Pais
+Abra o aplicativo Configurações
+Navegue até Contas ou Usuários e adicione um perfil supervisionado
+Crie o perfil infantil de teste com PIN dos pais
+Entre no perfil infantil
+Verifique que apenas aplicativos permitidos aparecem
+Tente abrir a loja de aplicativos e verifique o bloqueio ou fluxo restrito
+Saia do perfil infantil com o PIN dos pais
+
+TEST-002 - Ativação de eSIM com Código QR
+Abra o aplicativo Configurações
+Navegue até Rede móvel ou Cartões SIM
+Toque em Adicionar plano móvel ou eSIM
+Escaneie o código QR de provisionamento de teste fornecido pelo operador
+Aguarde o download do perfil eSIM
+Verifique que o plano aparece como ativo ou pronto para uso
+Defina preferência de dados móveis entre SIM físico e eSIM se aplicável
+
+TEST-003 - Mono Áudio para Acessibilidade Auditiva
+Abra o aplicativo Configurações
+Navegue até Acessibilidade e opções de áudio
+Ative a opção Mono áudio
+Abra o aplicativo Música e reproduza uma faixa estéreo
+Verifique que o som sai balanceado nos dois canais do fone
+Desative o mono áudio
+Verifique que a separação estéreo volta ao normal
+
+TEST-004 - Luz Noturna e Temperatura de Cor
+Abra o aplicativo Configurações
+Navegue até Tela ou Exibição
+Ative a Luz noturna ou filtro de calor
+Ajuste a intensidade para o máximo
+Verifique que a tela ganha tom mais quente
+Agende a luz noturna para o horário noturno de teste
+Salve e verifique o resumo do agendamento
+Desative ou restaure o agendamento ao final
+
+TEST-005 - Reduzir Animações do Sistema
+Abra o aplicativo Configurações
+Navegue até Acessibilidade
+Ative Reduzir movimento ou Remover animações
+Volte à tela inicial e abra um aplicativo
+Verifique que as transições são instantâneas ou mínimas
+Abra o menu de aplicativos recentes
+Verifique que o gesto não exibe animação longa
+Desative a opção e confirme que as animações voltam
+
+TEST-006 - Captura de Tela com Rolagem Estendida
+Abra o aplicativo Navegador
+Acesse uma página longa com várias telas de altura
+Capture uma captura de tela pelo gesto ou botões
+Toque na miniatura e selecione Capturar mais ou Rolagem
+Verifique que a imagem final inclui várias seções da página
+Salve a imagem e abra na Galeria para conferir o comprimento
+
+TEST-007 - Economia de Energia Máxima ou Ultra
+Abra o aplicativo Configurações
+Navegue até Bateria
+Ative o modo de economia máxima ou ultra se disponível
+Verifique que apenas aplicativos essenciais podem ser usados
+Abra o aplicativo Telefone e verifique que a discagem funciona
+Abra um aplicativo não essencial e verifique o aviso ou bloqueio
+Desative o modo e confirme o retorno dos aplicativos
+
+TEST-008 - DNS Privado Personalizado
+Abra o aplicativo Configurações
+Navegue até Rede privada DNS ou DNS privado
+Selecione o hostname de um provedor de DNS de teste
+Salve a configuração
+Abra o aplicativo Navegador e acesse um site de verificação de DNS
+Verifique que o resolvedor corresponde ao configurado
+Restaure para Automático ao final do teste
+
+TEST-009 - Instalação a Partir de Fontes Desconhecidas
+Abra o aplicativo Configurações
+Navegue até Segurança ou Aplicativos especiais
+Permita instalação de fontes desconhecidas apenas para o navegador de teste
+Baixe um pacote APK ou equivalente assinado de ambiente de laboratório
+Toque no arquivo baixado e inicie a instalação
+Verifique o fluxo de confirmação e permissões
+Cancele ou desinstale o app de teste e revogue a permissão de fontes
+
+TEST-010 - Modo USB Somente Carregar versus Transferência de Arquivos
+Conecte o cabo USB ao computador
+Abra a notificação de USB no dispositivo
+Selecione Somente carregar
+Verifique que o computador não monta o armazenamento interno
+Altere para Transferência de arquivos ou MTP
+Verifique que as pastas do telefone aparecem no explorador
+Copie um arquivo pequeno de teste para o telefone e confira no Gerenciador de arquivos
+
+TEST-011 - Espaço Seguro ou Pasta Protegida
+Abra o aplicativo Configurações
+Navegue até Segurança e configure o espaço seguro ou pasta bloqueada
+Defina autenticação por impressão digital ou PIN
+Mova um arquivo de teste para o espaço seguro
+Feche o espaço seguro e tente abrir o arquivo pelo gerenciador comum
+Verifique que o arquivo não é acessível sem autenticação
+Abra o espaço seguro e recupere o arquivo de teste
+
+TEST-012 - Tela Sempre Ligada ou Ambiente
+Abra o aplicativo Configurações
+Navegue até Tela bloqueada ou Exibição
+Ative a tela ambiente ou always-on display
+Verifique que horário e notificações aparecem com tela em repouso
+Bloqueie o dispositivo e aguarde alguns segundos
+Verifique que o consumo não dispara de forma anormal em curto período
+Desative a função ao final do teste
+
+TEST-013 - Acordar com Toque Duplo na Tela
+Abra o aplicativo Configurações
+Navegue até Tela bloqueada ou Recursos avançados
+Ative Toque duplo para acordar
+Desligue a tela com o botão de energia
+Toque duas vezes rapidamente na tela apagada
+Verifique que a tela liga sem pressionar o botão físico
+Desative a opção se não for desejada no dia a dia
+
+TEST-014 - Modo Bolso e Toques Acidentais
+Abra o aplicativo Configurações
+Navegue até Exibição ou Recursos avançados
+Ative o modo Bolso ou proteção contra toques acidentais
+Simule pressão na tela dentro de um bolso de teste ou capa
+Verifique que toques aleatórios não desbloqueiam ou abrem apps
+Desative o modo ao retirar o aparelho do bolso
+
+TEST-015 - Emergência a Partir da Tela de Bloqueio
+Bloqueie o dispositivo com PIN ou padrão
+Na tela de bloqueio, acione o atalho de emergência ou informações médicas
+Verifique que o teclado numérico de emergência está disponível
+Disque o número de emergência de teste do laboratório sem completar a chamada real se proibido
+Verifique que o cartão de informações médicas pode ser exibido sem desbloquear
+
+TEST-016 - Legendas Instantâneas em Mídia
+Abra o aplicativo Configurações
+Navegue até Acessibilidade e ative Legendas instantâneas ou ao vivo
+Abra um vídeo de teste com fala em um aplicativo de streaming ou arquivo local
+Verifique que legendas geradas aparecem sincronizadas com o áudio
+Pause o vídeo e verifique que as legendas param
+Desative a função ao final
+
+TEST-017 - Compatibilidade com Aparelho Auditivo
+Abra o aplicativo Configurações
+Navegue até Acessibilidade e áudio
+Ative Compatibilidade com aparelho auditivo ou streaming direto
+Pareie o aparelho auditivo de teste via Bluetooth
+Reproduza um áudio curto
+Verifique que o áudio é roteado para o aparelho auditivo com qualidade estável
+Despareie ou desative conforme protocolo do laboratório
+
+TEST-018 - Impressão Sem Fio em Rede Local
+Abra o aplicativo Configurações
+Navegue até Conexões ou Impressão
+Adicione impressora na rede WiFi de teste
+Abra um documento PDF de teste
+Toque em Compartilhar e selecione Imprimir
+Escolha a impressora adicionada e envie uma página de teste
+Verifique que o trabalho aparece na fila da impressora ou imprime com sucesso
+
+TEST-019 - Leitura de Tag NFC para Automação
+Abra o aplicativo Configurações
+Ative o NFC se necessário
+Aproxime uma tag NFC programável gravada com um ato de automação de teste
+Verifique que o sistema reconhece a tag e executa o ato configurado
+Leia os dados da tag com o aplicativo de tags se disponível
+Desative o NFC ao final se política do laboratório exigir
+
+TEST-020 - Usuário Convidado e Troca Rápida de Conta
+Abra o aplicativo Configurações
+Navegue até Usuários e adicione usuário convidado ou convidado restrito
+Entre no modo convidado
+Verifique que dados pessoais do usuário principal não aparecem
+Instale ou abra apenas apps permitidos no convidado
+Remova a sessão do convidado ou saia para o usuário principal
+Verifique que o perfil principal permanece intacto

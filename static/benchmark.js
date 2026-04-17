@@ -24,6 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
             if (data.error) throw new Error(data.error);
 
             renderBenchmark(data);
+            if (Array.isArray(data.warnings) && data.warnings.length) {
+                showError("Benchmark concluído com alertas: " + data.warnings.join(" | "));
+            }
         } catch (err) {
             showError(err.message);
         } finally {

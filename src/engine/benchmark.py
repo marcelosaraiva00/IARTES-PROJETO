@@ -2,11 +2,11 @@ from __future__ import annotations
 
 import copy
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
 
 from src.engine.metrics import OptimizationMetrics, compute_metrics
 from src.engine.pipeline import run_optimization_pipeline
-from src.llm.base import LLMProvider
 from src.llm.factory import create_llm_provider
 from src.models.test_case import OptimizationResult, TestCase
 
@@ -22,6 +22,7 @@ class BenchmarkRun:
 @dataclass
 class BenchmarkComparison:
     runs: list[BenchmarkRun] = field(default_factory=list)
+    warnings: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict:
         comparison_table: dict[str, dict[str, object]] = {}
@@ -65,6 +66,7 @@ class BenchmarkComparison:
             "comparison_table": comparison_table,
             "runs": runs_data,
             "providers": [r.provider_name for r in self.runs],
+            "warnings": self.warnings,
         }
 
 
@@ -80,29 +82,50 @@ def run_benchmark(
         provider_names = _detect_available_providers()
 
     comparison = BenchmarkComparison()
+    run_by_provider: dict[str, BenchmarkRun] = {}
+
+    if not provider_names:
+        return comparison
+
+    max_workers = min(len(provider_names), 4)
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_provider = {
+            executor.submit(_run_single_provider, name, test_cases): name
+            for name in provider_names
+        }
+
+        for future in as_completed(future_to_provider):
+            name = future_to_provider[future]
+            try:
+                run = future.result()
+            except Exception as exc:
+                comparison.warnings.append(f"Provider '{name}' falhou: {exc}")
+                continue
+            run_by_provider[name] = run
 
     for name in provider_names:
-        try:
-            provider = create_llm_provider(name)
-        except (ValueError, Exception):
-            continue
-
-        tc_copy = copy.deepcopy(test_cases)
-
-        start = time.perf_counter()
-        result = run_optimization_pipeline(tc_copy, provider, use_cache=False)
-        elapsed = (time.perf_counter() - start) * 1000
-
-        metrics = compute_metrics(result)
-
-        comparison.runs.append(BenchmarkRun(
-            provider_name=name,
-            result=result,
-            metrics=metrics,
-            elapsed_ms=elapsed,
-        ))
+        run = run_by_provider.get(name)
+        if run is not None:
+            comparison.runs.append(run)
 
     return comparison
+
+
+def _run_single_provider(name: str, test_cases: list[TestCase]) -> BenchmarkRun:
+    provider = create_llm_provider(name)
+    tc_copy = copy.deepcopy(test_cases)
+
+    start = time.perf_counter()
+    result = run_optimization_pipeline(tc_copy, provider, use_cache=False)
+    elapsed = (time.perf_counter() - start) * 1000
+    metrics = compute_metrics(result)
+
+    return BenchmarkRun(
+        provider_name=name,
+        result=result,
+        metrics=metrics,
+        elapsed_ms=elapsed,
+    )
 
 
 def _detect_available_providers() -> list[str]:

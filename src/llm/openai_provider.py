@@ -12,7 +12,8 @@ class OpenAIProvider(LLMProvider):
     def __init__(self, api_key: str = "", model: str = ""):
         self.api_key = api_key or config.OPENAI_API_KEY
         self.model = model or config.OPENAI_MODEL
-        self.client = OpenAI(api_key=self.api_key)
+        self.timeout_s = config.LLM_TIMEOUT_S
+        self.client = OpenAI(api_key=self.api_key, timeout=self.timeout_s, max_retries=1)
 
     def complete(self, prompt: str, *, system_prompt: str = "") -> str:
         messages = []
@@ -24,6 +25,7 @@ class OpenAIProvider(LLMProvider):
             model=self.model,
             messages=messages,
             temperature=0.2,
+            timeout=self.timeout_s,
         )
         return response.choices[0].message.content or ""
 
@@ -41,6 +43,7 @@ class OpenAIProvider(LLMProvider):
             messages=messages,
             temperature=0.1,
             response_format={"type": "json_object"},
+            timeout=self.timeout_s,
         )
         raw = response.choices[0].message.content or "{}"
         return json.loads(raw)

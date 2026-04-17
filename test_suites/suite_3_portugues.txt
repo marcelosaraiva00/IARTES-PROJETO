@@ -341,3 +341,215 @@ Conecte um segundo dispositivo ao "MeuHotspot"
 Verifique que a contagem de dispositivos conectados mostra 1
 Desative o Hotspot Móvel
 Verifique que o ícone do hotspot desaparece da barra de status
+
+TEST-031 - Ativação de Dados Móveis e Roaming
+Abra o aplicativo Configurações
+Navegue até as configurações de Rede Móvel
+Ative os Dados Móveis
+Verifique que o ícone de dados móveis aparece na barra de status
+Toque na opção Roaming de Dados
+Ative o roaming
+Verifique que o aviso de custos adicionais é exibido
+Confirme a ativação do roaming
+Verifique que o indicador de roaming aparece na barra de status
+
+TEST-032 - Seleção de Rede Móvel Manual
+Abra o aplicativo Configurações
+Navegue até as configurações de Rede Móvel
+Toque em Operadoras de rede
+Selecione a opção Pesquisar redes
+Aguarde a conclusão da busca
+Selecione manualmente a operadora "TestCarrier_BR"
+Verifique que o registro na rede é concluído com sucesso
+Verifique que o sinal de dados móveis permanece ativo
+
+TEST-033 - Limite de Uso de Dados e Alerta
+Abra o aplicativo Configurações
+Navegue até as configurações de Rede Móvel
+Toque em Limite de uso de dados
+Defina o limite mensal como 2 GB
+Ative o alerta ao atingir 80% do limite
+Verifique que o gráfico de consumo é exibido
+Simule consumo acima de 80% do limite em ambiente de teste
+Verifique que a notificação de aviso de limite aparece
+
+TEST-034 - Modo Avião e Restauração de Conectividade
+Abra o aplicativo Configurações
+Navegue até as configurações de Rede
+Ative o Modo Avião
+Verifique que WiFi, Bluetooth e dados móveis ficam desativados
+Verifique que o ícone de avião aparece na barra de status
+Desative o Modo Avião
+Verifique que o WiFi reconecta à última rede conhecida
+Verifique que os dados móveis voltam ao estado anterior
+
+TEST-035 - Compartilhamento de Internet via USB
+Abra o aplicativo Configurações
+Navegue até as configurações de Rede
+Conecte o cabo USB ao computador de teste
+Toque na opção Compartilhamento USB
+Ative o compartilhamento de internet por USB
+Verifique que o computador detecta a interface de rede
+Verifique que a navegação na web funciona no computador
+Desative o compartilhamento USB
+Verifique que a interface de rede some no computador
+
+TEST-036 - Agendamento de Reinicialização do Dispositivo
+Abra o aplicativo Configurações
+Navegue até as configurações do Sistema
+Toque em Reinicialização agendada
+Ative a reinicialização automática semanal
+Defina o dia para domingo e o horário para 03:00
+Salve o agendamento
+Verifique que o resumo do agendamento é exibido
+Cancele o agendamento para não reiniciar em produção
+Verifique que a mensagem de agendamento cancelado aparece
+
+TEST-037 - Atualização de Software do Sistema
+Abra o aplicativo Configurações
+Navegue até as configurações do Sistema
+Toque em Atualização de software
+Verifique que a versão atual do sistema é exibida
+Toque em Verificar atualizações
+Aguarde a verificação no servidor
+Se houver atualização disponível, verifique que o tamanho do download é mostrado
+Toque em Baixar mais tarde ou conclua o fluxo conforme ambiente de teste
+Verifique que o status da atualização é atualizado na tela
+
+TEST-038 - Backup na Nuvem e Restauração Seletiva
+Abra o aplicativo Configurações
+Navegue até as configurações de Conta e backup
+Toque em Backup na nuvem
+Ative o backup automático diário
+Toque em Fazer backup agora
+Verifique que a barra de progresso do backup é exibida
+Aguarde a conclusão do backup
+Abra a opção Restaurar dados
+Verifique que a lista de tipos de dados para restaurar é exibida
+
+TEST-039 - Modo Desenvolvedor e Depuração USB
+Abra o aplicativo Configurações
+Navegue até as informações do telefone
+Toque sete vezes no Número da compilação
+Volte às Configurações e abra Opções do desenvolvedor
+Ative a Depuração USB
+Conecte o cabo USB ao computador
+Verifique que o prompt de autorização RSA aparece no dispositivo
+Autorize o computador de teste
+Verifique que o dispositivo aparece como autorizado na lista
+
+TEST-040 - Redefinição de Rede sem Apagar Dados
+Abra o aplicativo Configurações
+Navegue até as configurações do Sistema
+Toque em Opções de redefinição
+Selecione Redefinir WiFi, móvel e Bluetooth
+Leia o aviso e confirme a redefinição
+Verifique que as redes WiFi salvas foram esquecidas
+Verifique que o Bluetooth permanece ativável após o processo
+Reconfigure uma rede WiFi de teste e verifique a conexão
+
+TEST-041 - Controle de Volume por Tipo de Áudio
+Abra o aplicativo Configurações
+Navegue até as configurações de Som
+Abra o aplicativo Música e reproduza uma faixa
+Ajuste o volume de mídia usando os botões físicos
+Verifique que o indicador de volume de mídia aparece
+Abra o aplicativo Telefone e simule toque de chamada recebida
+Ajuste o volume de toque
+Verifique que o volume de toque é independente do volume de mídia
+
+TEST-042 - Vibração e Modo Silencioso
+Abra o aplicativo Configurações
+Navegue até as configurações de Som
+Ative o modo Silencioso
+Verifique que o ícone de silencioso aparece na barra de status
+Ative a vibração para chamadas
+Receba uma chamada de teste
+Verifique que o dispositivo vibra sem tocar o som
+Desative o modo Silencioso
+Verifique que o toque volta ao volume configurado
+
+TEST-043 - Fuso Horário Automático e Manual
+Abra o aplicativo Configurações
+Navegue até as configurações de Data e hora
+Ative o fuso horário automático
+Verifique que o fuso exibido corresponde à localização de teste
+Desative o fuso horário automático
+Selecione manualmente o fuso "UTC-03:00 Brasília"
+Verifique que o relógio da barra de status reflete o novo fuso
+Reative o fuso horário automático
+
+TEST-044 - Bloqueio de Aplicativos com PIN
+Abra o aplicativo Configurações
+Navegue até as configurações de Segurança
+Toque em Bloqueio de aplicativos
+Defina um PIN de bloqueio de aplicativos
+Selecione o aplicativo Galeria para bloquear
+Abra o aplicativo Galeria
+Verifique que o prompt de PIN é solicitado
+Insira o PIN correto
+Verifique que a Galeria abre normalmente
+
+TEST-045 - Uso de Armazenamento por Aplicativo
+Abra o aplicativo Configurações
+Navegue até as configurações de Armazenamento
+Toque em Aplicativos
+Selecione o aplicativo Navegador
+Verifique que o uso de cache e dados é exibido
+Toque em Limpar cache
+Verifique que o valor de cache diminui
+Não limpe os dados do aplicativo para preservar perfis de teste
+Volte ao resumo de armazenamento
+
+TEST-046 - Permissão de Microfone Durante Chamada de Vídeo
+Abra o aplicativo Configurações
+Navegue até o Gerenciamento de Aplicativos
+Selecione o aplicativo de videoconferência de teste
+Toque em Permissões e negue o microfone
+Abra o aplicativo de videoconferência e inicie uma reunião de teste
+Verifique que o prompt para permitir microfone aparece
+Conceda a permissão de microfone
+Verifique que o áudio do microfone é capturado na reunião
+
+TEST-047 - Modo Uma Mão e Alcance da Tela
+Abra o aplicativo Configurações
+Navegue até as configurações de Tela
+Ative o modo Uma mão ou alcance reduzido
+Volte à tela inicial
+Acione o gesto de modo uma mão conforme documentação do dispositivo
+Verifique que a interface desce para facilitar o toque
+Toque fora da área reduzida
+Verifique que o modo uma mão é encerrado
+Desative a opção nas Configurações
+
+TEST-048 - Calendário: Criação de Evento com Lembrete
+Abra o aplicativo Calendário
+Toque em Novo evento
+Defina o título como "Reunião de integração"
+Defina a data para amanhã e duração de 1 hora
+Adicione um lembrete 15 minutos antes
+Salve o evento
+Verifique que o evento aparece na visualização do dia
+Abra o evento e verifique que o lembrete está configurado
+
+TEST-049 - Contatos: Adicionar e Mesclar Duplicata
+Abra o aplicativo Contatos
+Toque em Novo contato
+Insira o nome "João Teste" e o telefone "+55 11 90000-0001"
+Salve o contato
+Crie outro contato com o mesmo número e nome ligeiramente diferente
+Verifique que a sugestão de mesclar contatos duplicados aparece
+Confirme a mesclagem
+Verifique que existe apenas um contato com o número informado
+
+TEST-050 - Navegador: Abas, Modo Anônimo e Limpar Dados
+Abra o aplicativo Navegador
+Abra três abas com URLs de teste diferentes
+Verifique que o contador de abas mostra 3
+Abra uma nova aba anônima
+Navegue até uma página de teste
+Feche todas as abas anônimas
+Abra as configurações do Navegador
+Toque em Limpar dados de navegação
+Selecione apenas Histórico e Cookies
+Confirme e verifique que a operação conclui sem erros

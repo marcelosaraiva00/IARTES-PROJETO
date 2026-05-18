@@ -1,3 +1,5 @@
+Dispositivo alvo: Google Pixel 5a 5G, Android 11 (interface stock / Pixel Launcher). Idioma sugerido: Português (Brasil).
+
 TEST-001 - Widgets na Tela Inicial
 Toque e segure em uma área vazia da tela inicial
 Toque em Widgets
@@ -14,7 +16,7 @@ Ative a captura de áudio do sistema
 Inicie a gravação
 Abra o aplicativo de Música e reproduza uma faixa curta
 Pare a gravação pela notificação
-Abra o aplicativo Galeria
+Abra o aplicativo Fotos (Google Fotos)
 Reproduza o vídeo gravado e verifique que o áudio da faixa está presente
 
 TEST-003 - Lanterna e Atalhos do Painel Rápido
@@ -38,7 +40,7 @@ Verifique que o Calendário é aberto
 Desative o acionamento por voz para não permanecer ativo
 
 TEST-005 - Modo Leitura no Navegador
-Abra o aplicativo Navegador
+Abra o Chrome
 Acesse um artigo de notícias com muitos parágrafos
 Ative o modo Leitura ou visualização simplificada
 Verifique que anúncios e menus laterais somem do conteúdo
@@ -47,7 +49,7 @@ Verifique que o texto reflowa sem cortar parágrafos
 Saia do modo leitura e verifique que a página original volta
 
 TEST-006 - Digitalização de Documento com a Câmera
-Abra o aplicativo Câmera ou o fluxo de digitalização de documentos
+Abra o Google Câmera ou o fluxo de digitalização do Google Lens integrado
 Selecione o modo Documento ou Digitalizar
 Aponte para uma folha A4 impressa de teste
 Capture a digitalização
@@ -57,11 +59,11 @@ Abra o arquivo salvo e verifique que o texto está legível
 
 TEST-007 - Espelhamento de Tela em Dispositivo Sem Fios
 Abra o aplicativo Configurações
-Navegue até as opções de Conexão ou Transmissão de tela
+Navegue até Dispositivos conectados e abra Transmitir (Cast) ou espelhamento com receptor na mesma rede
 Ative a transmissão ou espelhamento sem fios
 Selecione o receptor de teste na mesma rede
 Verifique que a tela do telefone aparece no receptor
-Abra o aplicativo Galeria no telefone
+Abra o aplicativo Fotos (Google Fotos) no telefone
 Verifique que a imagem é exibida no receptor com atraso aceitável
 Encerre o espelhamento
 
@@ -77,7 +79,7 @@ Volte ao layout padrão e remova o teclado de teste se desejado
 
 TEST-009 - Limite de Tempo de Uso por Aplicativo
 Abra o aplicativo Configurações
-Navegue até Bem-estar digital ou Uso de aplicativos
+Navegue até Bem-estar digital (Digital Wellbeing)
 Selecione o aplicativo de rede social de teste
 Defina um limite diário de 15 minutos
 Abra o aplicativo e use até o limite ser atingido
@@ -86,11 +88,11 @@ Ignore temporariamente por 1 minuto se a opção existir
 Remova ou aumente o limite ao final do teste
 
 TEST-010 - Compactar Arquivos e Anexar no E-mail
-Abra o aplicativo Gerenciador de arquivos ou Arquivos
+Abra o aplicativo Arquivos (do Google)
 Selecione duas imagens de teste na pasta Download
 Toque em Compactar ou Criar arquivo ZIP
 Verifique que o arquivo compactado aparece na mesma pasta
-Abra o aplicativo E-mail
+Abra o Gmail
 Redija um novo e-mail de teste
 Anexe o arquivo ZIP criado
 Verifique que o anexo aparece com o tamanho correto antes de enviar

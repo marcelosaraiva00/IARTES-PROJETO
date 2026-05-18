@@ -1,3 +1,5 @@
+Dispositivo alvo: Google Pixel 5a 5G, Android 11 (interface stock, sensor biométrico traseiro). Idioma sugerido: Português (Brasil).
+
 TEST-001 - Conexão WiFi Básica
 Abra o aplicativo Configurações
 Navegue até as configurações de WiFi
@@ -81,30 +83,30 @@ Verifique que o áudio da chamada muda para o alto-falante
 Verifique que a chamada permanece conectada
 
 TEST-008 - Captura de Foto
-Abra o aplicativo Câmera
+Abra o aplicativo Google Câmera
 Mude para o modo Foto
 Verifique que o visor está ativo
 Toque no botão de captura
 Verifique que a animação do obturador é exibida
 Verifique que a notificação de foto salva aparece
-Abra o aplicativo Galeria
+Abra o aplicativo Fotos (Google Fotos)
 Verifique que a última foto aparece nas fotos recentes
 
 TEST-009 - Gravação de Vídeo
-Abra o aplicativo Câmera
+Abra o aplicativo Google Câmera
 Mude para o modo Vídeo
 Verifique que o visor está ativo
 Toque no botão de gravar
 Aguarde 10 segundos
 Toque no botão de parar gravação
 Verifique que a notificação de vídeo salvo aparece
-Abra o aplicativo Galeria
+Abra o aplicativo Fotos (Google Fotos)
 Verifique que o último vídeo aparece na mídia recente
 Reproduza o vídeo gravado
 Verifique que a reprodução do vídeo funciona corretamente
 
 TEST-010 - Câmera Frontal
-Abra o aplicativo Câmera
+Abra o aplicativo Google Câmera
 Mude para o modo Foto
 Verifique que o visor está ativo
 Toque no botão de trocar câmera
@@ -114,7 +116,7 @@ Toque no botão de captura
 Verifique que a selfie foi salva
 
 TEST-011 - Zoom Durante Gravação de Vídeo
-Abra o aplicativo Câmera
+Abra o aplicativo Google Câmera
 Mude para o modo Vídeo
 Verifique que o visor está ativo
 Toque no botão de gravar
@@ -122,7 +124,7 @@ Faça gesto de pinça para ampliar até 3x
 Verifique que o indicador de zoom mostra 3x
 Faça gesto de pinça para reduzir até 1x
 Toque no botão de parar gravação
-Abra o aplicativo Galeria
+Abra o aplicativo Fotos (Google Fotos)
 Reproduza o vídeo gravado
 Verifique que as transições de zoom aparecem na reprodução
 
@@ -130,22 +132,22 @@ TEST-012 - Configuração de Pagamento NFC
 Abra o aplicativo Configurações
 Navegue até as configurações de NFC
 Ative o NFC
-Abra o aplicativo Carteira
+Abra o Google Pay
 Toque em Adicionar método de pagamento
 Insira o número do cartão "4111-1111-1111-1111"
 Insira a data de validade e CVV
 Verifique que o cartão foi adicionado com sucesso
-Verifique que o cartão aparece na Carteira
+Verifique que o cartão aparece no Google Pay
 
 TEST-013 - Pagamento Rápido NFC
 Abra o aplicativo Configurações
 Navegue até as configurações de NFC
 Ative o NFC
-Abra o aplicativo Carteira
+Abra o Google Pay
 Verifique que o cartão de pagamento padrão está definido
 Aproxime o celular do terminal de pagamento
 Verifique que o prompt de autenticação de pagamento aparece
-Autentique com impressão digital
+Autentique com impressão digital no sensor traseiro
 Verifique que a notificação de transação concluída aparece
 
 TEST-014 - Exceção de Chamadas no Não Perturbe
@@ -186,7 +188,7 @@ Verifique que a porcentagem atual da bateria é exibida
 Ative o modo Economia de Bateria
 Verifique que a barra de status fica laranja
 Verifique que a notificação de sincronização pausada aparece
-Abra o aplicativo de E-mail
+Abra o Gmail
 Verifique que os e-mails não estão sincronizando automaticamente
 Desative o modo Economia de Bateria
 Verifique que a barra de status volta à cor normal
@@ -207,7 +209,7 @@ TEST-019 - Bloqueio de Rotação de Tela
 Abra o aplicativo Configurações
 Navegue até as configurações de Tela
 Desative a rotação automática
-Abra o aplicativo Navegador
+Abra o Chrome
 Acesse uma página web
 Gire o dispositivo para paisagem
 Verifique que a tela permanece em modo retrato
@@ -222,19 +224,19 @@ Ative o Modo Escuro
 Verifique que o fundo do aplicativo Configurações muda para escuro
 Abra o aplicativo Mensagens
 Verifique que o fundo do aplicativo Mensagens está escuro
-Abra o aplicativo Navegador
-Verifique que a interface do Navegador está escura
+Abra o Chrome
+Verifique que a interface do Chrome está escura
 Desative o Modo Escuro
 Verifique que os aplicativos voltam ao tema claro
 
 TEST-021 - Tela Dividida Multi-Janela
 Abra o aplicativo Mensagens
 Acione o modo de tela dividida
-Selecione o aplicativo Navegador para o segundo painel
+Selecione o Chrome para o segundo painel
 Verifique que ambos os aplicativos estão visíveis simultaneamente
 Digite uma mensagem no aplicativo Mensagens
 Verifique que o texto da mensagem aparece corretamente
-Role a página no painel do Navegador
+Role a página no painel do Chrome
 Verifique que a rolagem funciona independentemente
 Saia do modo de tela dividida
 Verifique que a tela cheia retorna ao último aplicativo ativo
@@ -244,7 +246,7 @@ Abra o aplicativo Configurações
 Navegue até as configurações de Segurança
 Toque em Configurar impressão digital
 Insira o PIN do dispositivo para verificação
-Coloque o dedo no sensor
+Coloque o dedo no sensor traseiro sob o logotipo G do Pixel 5a
 Levante e coloque o dedo repetidamente até completar o cadastro
 Verifique que a mensagem de impressão digital registrada aparece
 Verifique que a impressão digital aparece na lista de registros
@@ -256,7 +258,7 @@ Toque em Configurar impressão digital
 Insira o PIN do dispositivo para verificação
 Verifique que pelo menos uma impressão digital está registrada
 Bloqueie a tela do dispositivo
-Coloque o dedo registrado no sensor
+Coloque o dedo registrado no sensor traseiro
 Verifique que o dispositivo desbloqueia para a tela inicial
 
 TEST-024 - Configuração de Conexão VPN
@@ -268,7 +270,7 @@ Insira o endereço do servidor "vpn.testcorp.com"
 Insira as credenciais
 Toque em Conectar
 Verifique que o ícone de VPN conectado aparece na barra de status
-Abra o aplicativo Navegador
+Abra o Chrome
 Verifique que o endereço IP mudou através da VPN
 
 TEST-025 - Desconexão Automática da VPN ao Mudar WiFi
@@ -321,12 +323,12 @@ Verifique que a mensagem de confirmação de exclusão aparece
 TEST-029 - Gerenciamento de Permissões de Aplicativo
 Abra o aplicativo Configurações
 Navegue até o Gerenciamento de Aplicativos
-Selecione o aplicativo Câmera
+Selecione o aplicativo Google Câmera
 Toque em Permissões
 Verifique que a permissão de Localização está listada
 Altere a permissão de Localização para Negar
 Verifique que a confirmação de permissão negada aparece
-Abra o aplicativo Câmera
+Abra o aplicativo Google Câmera
 Verifique que a tag de localização não é adicionada às novas fotos
 
 TEST-030 - Criação e Conexão de Hotspot
@@ -484,17 +486,17 @@ Abra o aplicativo Configurações
 Navegue até as configurações de Segurança
 Toque em Bloqueio de aplicativos
 Defina um PIN de bloqueio de aplicativos
-Selecione o aplicativo Galeria para bloquear
-Abra o aplicativo Galeria
+Selecione o aplicativo Fotos (Google Fotos) para bloquear
+Abra o aplicativo Fotos (Google Fotos)
 Verifique que o prompt de PIN é solicitado
 Insira o PIN correto
-Verifique que a Galeria abre normalmente
+Verifique que o aplicativo Fotos (Google Fotos) abre normalmente
 
 TEST-045 - Uso de Armazenamento por Aplicativo
 Abra o aplicativo Configurações
 Navegue até as configurações de Armazenamento
 Toque em Aplicativos
-Selecione o aplicativo Navegador
+Selecione o Chrome
 Verifique que o uso de cache e dados é exibido
 Toque em Limpar cache
 Verifique que o valor de cache diminui
@@ -511,16 +513,13 @@ Verifique que o prompt para permitir microfone aparece
 Conceda a permissão de microfone
 Verifique que o áudio do microfone é capturado na reunião
 
-TEST-047 - Modo Uma Mão e Alcance da Tela
+TEST-047 - Escala de exibição e alcance (substitui modo uma mão típico de OEM)
 Abra o aplicativo Configurações
-Navegue até as configurações de Tela
-Ative o modo Uma mão ou alcance reduzido
-Volte à tela inicial
-Acione o gesto de modo uma mão conforme documentação do dispositivo
-Verifique que a interface desce para facilitar o toque
-Toque fora da área reduzida
-Verifique que o modo uma mão é encerrado
-Desative a opção nas Configurações
+Navegue até Tela > Tamanho da fonte e estilo de exibição (ou menu equivalente no Android 11)
+Ajuste temporariamente a escala ou o tamanho de exibição para um valor menor que o padrão
+Volte à tela inicial e abra um aplicativo com muitos botões na parte superior
+Verifique que mais conteúdo fica acessível ao polegar sem ativar recursos exclusivos de fabricante
+Restaure o tamanho padrão ao final do teste
 
 TEST-048 - Calendário: Criação de Evento com Lembrete
 Abra o aplicativo Calendário
@@ -542,14 +541,14 @@ Verifique que a sugestão de mesclar contatos duplicados aparece
 Confirme a mesclagem
 Verifique que existe apenas um contato com o número informado
 
-TEST-050 - Navegador: Abas, Modo Anônimo e Limpar Dados
-Abra o aplicativo Navegador
+TEST-050 - Chrome: Abas, Modo Anônimo e Limpar Dados
+Abra o Chrome
 Abra três abas com URLs de teste diferentes
 Verifique que o contador de abas mostra 3
 Abra uma nova aba anônima
 Navegue até uma página de teste
 Feche todas as abas anônimas
-Abra as configurações do Navegador
+Abra as configurações do Chrome
 Toque em Limpar dados de navegação
 Selecione apenas Histórico e Cookies
 Confirme e verifique que a operação conclui sem erros

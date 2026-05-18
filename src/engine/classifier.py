@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import config
 from src.engine.cache import StepCache
 from src.llm.base import LLMProvider
 from src.models.test_case import StepType, TestCase
@@ -51,7 +52,13 @@ IMPORTANT: Every single step below MUST appear in the classifications. Do not sk
 STEPS TO CLASSIFY:
 """
 
-BATCH_SIZE = 40
+DEFAULT_BATCH_SIZE = 40
+
+
+def _batch_size_for(llm: LLMProvider) -> int:
+    if llm.provider_name == "gemini":
+        return max(1, min(config.GEMINI_BATCH_SIZE, DEFAULT_BATCH_SIZE))
+    return DEFAULT_BATCH_SIZE
 
 
 def _normalize_classification(info: dict) -> dict:
@@ -96,8 +103,9 @@ def classify_steps(
     all_classifications: dict[str, dict] = dict(cached)
 
     uncached_items = list(uncached.items())
-    for i in range(0, len(uncached_items), BATCH_SIZE):
-        batch = uncached_items[i : i + BATCH_SIZE]
+    batch_size = _batch_size_for(llm)
+    for i in range(0, len(uncached_items), batch_size):
+        batch = uncached_items[i : i + batch_size]
         step_list = "\n".join(f'- {nid}: "{text}"' for nid, text in batch)
         prompt = CLASSIFICATION_PROMPT + step_list
         result = llm.complete_json(prompt)

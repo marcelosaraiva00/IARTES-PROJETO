@@ -1,0 +1,49 @@
+{
+  "comparison_table": {
+    "unique_normalized_ids": {
+      "label": "Steps Únicos Detectados"
+    },
+    "normalized_groups": {
+      "label": "Grupos Normalizados"
+    },
+    "verifications_detected": {
+      "label": "Verificações Detectadas"
+    },
+    "actions_detected": {
+      "label": "Ações Detectadas"
+    },
+    "destructive_steps": {
+      "label": "Steps Destrutivos"
+    },
+    "total_optimized_steps": {
+      "label": "Steps Otimizados"
+    },
+    "steps_eliminated": {
+      "label": "Steps Eliminados"
+    },
+    "reduction_percent": {
+      "label": "Redução %"
+    },
+    "resetup_count": {
+      "label": "Re-setups"
+    },
+    "context_switches": {
+      "label": "Trocas de Contexto"
+    },
+    "merge_depth_max": {
+      "label": "Profundidade Merge (máx)"
+    },
+    "merge_depth_avg": {
+      "label": "Profundidade Merge (média)"
+    },
+    "elapsed_ms": {
+      "label": "Tempo (ms)"
+    }
+  },
+  "runs": [],
+  "providers": [],
+  "warnings": [
+    "Provider 'gemini' falhou: Timeout of 600.0s exceeded, last exception: 503 This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later."
+  ],
+  "_total_benchmark_ms": 604950.0
+}

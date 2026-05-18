@@ -1,3 +1,5 @@
+Dispositivo alvo: Google Pixel 5a 5G, Android 11 (interface stock). Idioma sugerido: Português (Brasil).
+
 TEST-001 - Perfil Infantil e Controle dos Pais
 Abra o aplicativo Configurações
 Navegue até Contas ou Usuários e adicione um perfil supervisionado
@@ -46,35 +48,34 @@ Verifique que o gesto não exibe animação longa
 Desative a opção e confirme que as animações voltam
 
 TEST-006 - Captura de Tela com Rolagem Estendida
-Abra o aplicativo Navegador
+Abra o Chrome
 Acesse uma página longa com várias telas de altura
 Capture uma captura de tela pelo gesto ou botões
 Toque na miniatura e selecione Capturar mais ou Rolagem
 Verifique que a imagem final inclui várias seções da página
-Salve a imagem e abra na Galeria para conferir o comprimento
+Salve a imagem e abra no aplicativo Fotos (Google Fotos) para conferir o comprimento
 
-TEST-007 - Economia de Energia Máxima ou Ultra
+TEST-007 - Economia de Bateria com Restrições (Pixel / Android 11)
 Abra o aplicativo Configurações
 Navegue até Bateria
-Ative o modo de economia máxima ou ultra se disponível
-Verifique que apenas aplicativos essenciais podem ser usados
-Abra o aplicativo Telefone e verifique que a discagem funciona
-Abra um aplicativo não essencial e verifique o aviso ou bloqueio
-Desative o modo e confirme o retorno dos aplicativos
+Ative o modo Economia de bateria (Battery Saver), recurso nativo do Android 11 no Pixel
+Verifique que a interface indica modo econômico e que sincronizações em segundo plano ficam limitadas
+Abra o aplicativo Telefone e verifique que a discagem permanece funcional
+Abra um aplicativo que dependa fortemente de sincronização em segundo plano e verifique atraso ou aviso compatível com o modo ativo
+Desative o modo Economia de bateria e confirme o retorno ao comportamento normal
 
 TEST-008 - DNS Privado Personalizado
 Abra o aplicativo Configurações
 Navegue até Rede privada DNS ou DNS privado
 Selecione o hostname de um provedor de DNS de teste
 Salve a configuração
-Abra o aplicativo Navegador e acesse um site de verificação de DNS
+Abra o Chrome e acesse um site de verificação de DNS
 Verifique que o resolvedor corresponde ao configurado
 Restaure para Automático ao final do teste
 
 TEST-009 - Instalação a Partir de Fontes Desconhecidas
 Abra o aplicativo Configurações
-Navegue até Segurança ou Aplicativos especiais
-Permita instalação de fontes desconhecidas apenas para o navegador de teste
+Navegue até Privacidade ou Aplicativos especiais e permita fontes desconhecidas só para o Chrome (ou o navegador de teste)
 Baixe um pacote APK ou equivalente assinado de ambiente de laboratório
 Toque no arquivo baixado e inicie a instalação
 Verifique o fluxo de confirmação e permissões
@@ -87,16 +88,15 @@ Selecione Somente carregar
 Verifique que o computador não monta o armazenamento interno
 Altere para Transferência de arquivos ou MTP
 Verifique que as pastas do telefone aparecem no explorador
-Copie um arquivo pequeno de teste para o telefone e confira no Gerenciador de arquivos
+Copie um arquivo pequeno de teste para o telefone e confira no aplicativo Arquivos (do Google)
 
-TEST-011 - Espaço Seguro ou Pasta Protegida
-Abra o aplicativo Configurações
-Navegue até Segurança e configure o espaço seguro ou pasta bloqueada
-Defina autenticação por impressão digital ou PIN
-Mova um arquivo de teste para o espaço seguro
-Feche o espaço seguro e tente abrir o arquivo pelo gerenciador comum
-Verifique que o arquivo não é acessível sem autenticação
-Abra o espaço seguro e recupere o arquivo de teste
+TEST-011 - Pasta bloqueada no Google Fotos (substitui espaço seguro de OEM)
+Abra o aplicativo Fotos (Google Fotos)
+Acesse Biblioteca e localize a Pasta bloqueada (conclua a configuração inicial se for pedido)
+Autentique com o PIN ou com impressão digital no sensor traseiro do Pixel 5a, conforme o fluxo do sistema
+Mova uma mídia de teste (foto ou vídeo curto) para a Pasta bloqueada
+Saia do app e verifique que o item não aparece nos álbuns comuns nem em pré-visualizações externas sem desbloquear a pasta
+Abra novamente a Pasta bloqueada, autentique e mova o item de volta para a biblioteca principal
 
 TEST-012 - Tela Sempre Ligada ou Ambiente
 Abra o aplicativo Configurações
@@ -107,22 +107,22 @@ Bloqueie o dispositivo e aguarde alguns segundos
 Verifique que o consumo não dispara de forma anormal em curto período
 Desative a função ao final do teste
 
-TEST-013 - Acordar com Toque Duplo na Tela
+TEST-013 - Visualizar tela de bloqueio ao tocar (comportamento Pixel)
 Abra o aplicativo Configurações
-Navegue até Tela bloqueada ou Recursos avançados
-Ative Toque duplo para acordar
+Navegue até Tela > Tela de bloqueio
+Ative a opção equivalente a tocar na tela apagada para exibir informações ou despertar (rótulo varia, ex.: toque para checar o telefone, conforme Android 11 no Pixel 5a)
 Desligue a tela com o botão de energia
-Toque duas vezes rapidamente na tela apagada
-Verifique que a tela liga sem pressionar o botão físico
-Desative a opção se não for desejada no dia a dia
+Toque uma ou duas vezes na tela apagada, conforme o gesto suportado pela build em teste
+Verifique que o ambiente de bloqueio ou o mostrador aparece sem precisar apenas do botão de energia
+Desative a opção ao final se não for desejada no dia a dia
 
-TEST-014 - Modo Bolso e Toques Acidentais
+TEST-014 - Atenção na tela (manter acesa enquanto você olha)
 Abra o aplicativo Configurações
-Navegue até Exibição ou Recursos avançados
-Ative o modo Bolso ou proteção contra toques acidentais
-Simule pressão na tela dentro de um bolso de teste ou capa
-Verifique que toques aleatórios não desbloqueiam ou abrem apps
-Desative o modo ao retirar o aparelho do bolso
+Navegue até Tela e localize Atenção na tela (Screen attention)
+Ative Atenção na tela
+Abra um artigo longo no Chrome e mantenha o olhar na tela além do tempo habitual do temporizador
+Verifique que a tela permanece ligada enquanto há presença ativa do usuário
+Desative a opção ao final do teste
 
 TEST-015 - Emergência a Partir da Tela de Bloqueio
 Bloqueie o dispositivo com PIN ou padrão
@@ -131,9 +131,9 @@ Verifique que o teclado numérico de emergência está disponível
 Disque o número de emergência de teste do laboratório sem completar a chamada real se proibido
 Verifique que o cartão de informações médicas pode ser exibido sem desbloquear
 
-TEST-016 - Legendas Instantâneas em Mídia
+TEST-016 - Legendas ao vivo (Live Caption) em mídia
 Abra o aplicativo Configurações
-Navegue até Acessibilidade e ative Legendas instantâneas ou ao vivo
+Navegue até Acessibilidade e ative Legendas ao vivo (Live Caption)
 Abra um vídeo de teste com fala em um aplicativo de streaming ou arquivo local
 Verifique que legendas geradas aparecem sincronizadas com o áudio
 Pause o vídeo e verifique que as legendas param
@@ -150,7 +150,7 @@ Despareie ou desative conforme protocolo do laboratório
 
 TEST-018 - Impressão Sem Fio em Rede Local
 Abra o aplicativo Configurações
-Navegue até Conexões ou Impressão
+Navegue até Dispositivos conectados ou Impressão (serviço de impressão padrão)
 Adicione impressora na rede WiFi de teste
 Abra um documento PDF de teste
 Toque em Compartilhar e selecione Imprimir

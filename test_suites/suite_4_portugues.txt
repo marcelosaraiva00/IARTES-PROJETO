@@ -1,0 +1,345 @@
+Dispositivo alvo: Google Pixel 5a 5G, Android 11 (interface stock). Esta suíte prioriza ajustes feitos nas Configurações e no próprio aparelho, sem fluxos que exijam criar ou adicionar conta Google (roteador Wi‑Fi da bancada não conta como segundo dispositivo). Idioma sugerido: Português (Brasil).
+
+
+TEST-001 - Widgets na tela inicial
+Toque e segure em uma área vazia da tela inicial
+Toque em Widgets
+Selecione o widget Relógio digital em tamanho médio
+Posicione o widget na primeira página inicial
+Verifique que o relógio exibe a hora correta
+Redimensione o widget para o tamanho grande
+Verifique que o layout se ajusta sem sobrepor ícones
+
+TEST-002 - Gravação de tela com áudio interno (revisão só no armazenamento local)
+Abra o painel de configurações rápidas
+Toque em Gravar tela
+Ative a captura de áudio do dispositivo
+Inicie a gravação
+Reproduza um arquivo de áudio ou vídeo curto já gravado no aparelho pelo aplicativo Arquivos ou pelo reprodutor do sistema (mídia copiada pelo laboratório para Download ou Música)
+Encerre a gravação pela notificação ou botão do overlay
+Abra o aplicativo Arquivos e localize a pasta de gravações de tela (ex.: Filmes ou pasta indicada na interface)
+Reproduza o arquivo MP4 da gravação e verifique que o áudio da fonte interna está audível
+
+TEST-003 - Lanterna e edição de atalhos rápidos
+Abra o painel de configurações rápidas totalmente
+Ative o ícone da Lanterna
+Verifique que o LED traseiro permanece aceso
+Toque em Editar ou no lápis para ajustar os blocos
+Garanta que Gravar tela e Lanterna estejam visíveis na grade
+Conclua a edição
+Desative a Lanterna
+Verifique que o LED se apaga
+
+TEST-004 - Configurações: busca integrada até uma tela avançada
+Abra o aplicativo Configurações
+Toque na lupa ou campo de busca no topo
+Digite um termo objetivo (ex.: Wi‑Fi ou Bateria)
+Toque no resultado que abre diretamente a página correspondente
+Verifique que a tela correta foi aberta sem navegar manualmente por todos os menus
+Volte ao início das Configurações
+
+TEST-005 - Chrome: modo simplificado ou leitura (sem login)
+Abra o Chrome sem iniciar sessão em perfil (perfil local ou convidado, conforme política do laboratório)
+Acesse um artigo longo com muitos parágrafos (URL fixa da bancada, preferencialmente servida na rede local)
+Se disponível, ative a visualização simplificada ou modo leitura
+Verifique que o texto principal fica legível e o ruído visual diminui
+Ajuste o tamanho da fonte dentro do leitor, se houver opção
+Saia do modo de leitura e confirme que o site normal retorna
+
+TEST-006 - Digitalização de documento com Google Câmera (só armazenamento local)
+Abra o aplicativo Google Câmera
+Use o modo ou fluxo de digitalização de documento disponível na build (ou Lens só para captura, sem login)
+Aponte para uma folha de papel de teste do laboratório
+Capture e ajuste as bordas na pré-visualização
+Salve em PDF ou imagem no armazenamento interno
+Abra o arquivo pelo aplicativo Arquivos e verifique a legibilidade do texto
+
+TEST-007 - Teclado virtual: segundo layout usando o Chrome
+Abra o aplicativo Configurações
+Navegue até Sistema > Idiomas e entrada > Teclado virtual
+Adicione um layout secundário de teste (ex.: inglês EUA)
+Abra o Chrome e toque na barra de endereço para abrir o teclado
+Troque de layout pelo ícone de globo ou tecla de idioma
+Digite uma frase curta na barra sem enviar a página
+Remova o layout adicional nas Configurações ao final se o laboratório exige retorno ao estado inicial
+
+TEST-008 - Luz noturna: intensidade e agendamento
+Abra o aplicativo Configurações
+Navegue até Tela > Luz noturna
+Ative a Luz noturna manualmente
+Aumente a intensidade e verifique o tom mais quente
+Configure um agendamento curto (início e fim próximos ao horário de teste)
+Salve e abra o resumo do agendamento para conferir
+Desative o agendamento ou a luz ao terminar
+
+TEST-009 - Reduzir animações do sistema
+Abra o aplicativo Configurações
+Navegue até Acessibilidade
+Ative Remover animações ou Reduzir movimento
+Volte à tela inicial e abra um app qualquer
+Observe que transições ficam mínimas ou instantâneas
+Abra o menu de aplicativos recentes e verifique ausência de animações longas
+Desative a opção e confira que o visual volta ao padrão
+
+TEST-010 - Captura de tela com rolagem no Chrome
+Abra o Chrome em página longa com várias telas de altura (URL fixa do laboratório)
+Capture uma captura de tela pelo atalho de volume + ligar ou menu de energia
+Toque na miniatura e escolha Capturar mais ou captura com rolagem, se oferecido
+Salve a imagem longa
+Abra o resultado em Imagens > Capturas de tela pelo aplicativo Arquivos
+Verifique que vários trechos da página aparecem na mesma imagem
+
+TEST-011 - Economia de bateria funcional
+Abra o aplicativo Configurações
+Navegue até Bateria
+Ative o modo Economia de bateria
+Verifique indicador visual de modo econômico na interface ou barra de status
+Verifique se aparece notificação ou texto do sistema sobre limitação de atividade em segundo plano
+Abra o aplicativo Telefone e confira que o teclado de discagem responde normalmente
+Abra o aplicativo Relógio e confirme que a interface de alarmes e temporizadores abre sem erro
+Desative a Economia de bateria e confirme retorno ao comportamento usual
+
+TEST-012 - DNS privado: configurar e validar no aparelho
+Abra o aplicativo Configurações
+Navegue até Rede e internet > DNS privado
+Escolha Nome do host do provedor DNS e insira o hostname de teste do laboratório
+Salve a configuração
+Abra o Chrome em uma página HTTPS de verificação de DNS (ferramenta aprovada)
+Confira que o resolvedor exibido corresponde ao hostname configurado
+Restaure DNS privado para Automático ao final
+
+TEST-013 - Privacidade na tela de bloqueio: ocultar conteúdo sensível das notificações
+Abra o aplicativo Configurações
+Navegue até Privacidade ou Notificações > na tela de bloqueio (rótulo pode variar na build)
+Ative a opção de não exibir conteúdo sensível ou texto completo das notificações no bloqueio
+Em ambiente de teste, dispare uma notificação local (ex.: alarme do Relógio ou download concluído em segundo plano) sem desbloquear o aparelho
+Verifique que o painel de bloqueio não revela o texto completo conforme a política configurada
+Restaure o comportamento anterior ao final se for o padrão exigido pelo laboratório
+
+TEST-014 - Atenção na tela (screen attention)
+Abra o aplicativo Configurações
+Navegue até Tela
+Ative Atenção na tela
+Abra um artigo no Chrome e mantenha o foco visual além do tempo de bloqueio configurado
+Verifique que a tela não apaga enquanto você continua olhando
+Desative Atenção na tela ao concluir
+
+TEST-015 - Emergência e informações na tela de bloqueio
+Bloqueie o aparelho com PIN ou padrão já configurado
+Na tela de bloqueio, abra o painel de emergência ou atalho equivalente
+Verifique acesso ao teclado de emergência sem desbloquear o aparelho
+Se o laboratório já preencheu informações médicas em Configurações, confira que o cartão pode ser aberto sem desbloquear
+Feche os painéis sem completar chamada real se proibido pela política
+
+TEST-016 - Legendas ao vivo com arquivo de vídeo local
+Garanta um arquivo de vídeo com fala clara no armazenamento interno (fornecido pelo laboratório)
+Abra o aplicativo Configurações
+Navegue até Acessibilidade > Legendas ao vivo (Live Caption)
+Ative Legendas ao vivo
+Abra o vídeo pelo aplicativo Arquivos com o reprodutor do sistema
+Verifique que legendas aparecem sincronizadas com a fala enquanto a mídia toca
+Pause a reprodução e confirme que as legendas cessam ou esmaecem
+Desative Legendas ao vivo
+
+TEST-017 - Modo avião: isolar rádios e restaurar conectividade
+Abra o aplicativo Configurações
+Navegue até Rede e internet
+Ative o Modo avião
+Verifique que Wi‑Fi e dados móveis ficam inativos e que o ícone de avião aparece
+Abra o Telefone e confirme ausência de registração de rede ou mensagem coerente
+Desative o Modo avião
+Verifique que o rádio volta e que o Wi‑Fi pode ser reativado manualmente se necessário
+
+TEST-018 - Wi‑Fi: conexão inicial à rede do laboratório
+Abra o aplicativo Configurações
+Navegue até Rede e internet > Wi‑Fi
+Ative o Wi‑Fi
+Selecione a rede "TestNetwork_5G" (SSID do ambiente de bancada)
+Insira a senha fornecida pelo laboratório
+Toque em Conectar
+Verifique ícone de Wi‑Fi na barra de status e que o nome da rede aparece nas Configurações
+
+TEST-019 - Wi‑Fi: desconectar e reconectar na mesma sessão
+Com o Wi‑Fi conectado à rede salva do laboratório, abra os detalhes da rede
+Toque em Desconectar ou equivalente
+Verifique que a conexão cai
+Selecione novamente a mesma rede
+Verifique reconexão automática sem redigitar senha
+Confirme ícone de conectado na barra de status
+
+TEST-020 - Wi‑Fi: esquecer rede (executar ao final da bateria de testes Wi‑Fi ou reaplique credenciais depois)
+Abra Configurações > Rede e internet > Wi‑Fi
+Conecte-se novamente à rede de laboratório se necessário
+Pressione e segure o nome da rede salva
+Escolha Esquecer ou Remover rede
+Verifique que a rede some da lista de memorizadas e que a próxima conexão exige senha
+Reconfigure a rede com o laboratório antes da próxima rodada se for obrigatório manter acesso
+
+TEST-021 - Google Câmera: vídeo curto e reprodução local
+No Google Câmera, mude para Vídeo
+Grave entre 5 e 10 segundos de um cenário fixo do laboratório
+Encerre a gravação
+Abra o clipe pela miniatura no canto ou pelo Arquivos em DCIM > Camera ou pasta de vídeos indicada
+Reproduza o arquivo e verifique áudio e vídeo sem travamentos graves
+
+TEST-022 - Google Câmera: selfie e modo frontal
+No Google Câmera, alterne para a câmera frontal
+Capture uma selfie de teste
+Revise a imagem pela miniatura ou pelo Arquivos
+Verifique orientação e exposição razoáveis
+
+TEST-023 - Modo escuro, escala de exibição e tela dividida sem Mensagens
+Abra Configurações > Tela
+Ative o Modo escuro
+Confira que a interface das Configurações e do Chrome refletem o tema escuro
+Volte a Tela > Tamanho da fonte e estilo de exibição (ou equivalente)
+Ajuste temporariamente a escala de exibição um passo abaixo do padrão
+Abra o Relógio e inicie um temporizador curto (ex.: 3 minutos) sem aguardar o fim
+Acione o menu de apps recentes e entre em tela dividida com o Chrome
+Deixe o painel do Relógio visível em um lado e role uma página no Chrome no outro
+Cancele o temporizador, saia da divisão de tela e restaure escala e tema claro conforme o baseline do laboratório
+
+TEST-024 - Som: conferir controles de volume de mídia
+Abra o aplicativo Configurações
+Navegue até as configurações de Som
+Toque em Volume ou abra o painel de volumes do sistema
+Ajuste o volume de mídia para um nível intermediário usando o controle na tela
+Verifique que o indicador de volume de mídia reflete o valor escolhido
+Reproduza um arquivo de áudio local pelo Arquivos e confirme que o volume corresponde ao ajuste
+
+TEST-025 - Som: vibrar ao tocar
+Abra o aplicativo Configurações
+Navegue até as configurações de Som
+Localize a opção de vibrar ao tocar ou feedback tátil de toque
+Ative a opção se estiver desligada
+Toque em um ícone na tela inicial e verifique vibração curta se o hardware suportar
+Desative a opção ao final para restaurar o baseline do laboratório
+
+TEST-026 - Som: ativar e desativar Não perturbe
+Abra o aplicativo Configurações
+Navegue até as configurações de Som
+Ative o modo Não perturbe
+Verifique que o ícone de Não perturbe aparece na barra de status
+Desative o modo Não perturbe
+Verifique que o ícone some da barra de status
+
+TEST-027 - Tela: ajustar brilho manual
+Abra o aplicativo Configurações
+Navegue até as configurações de Tela
+Desative o brilho adaptativo se estiver ligado
+Ajuste o controle de brilho para um valor baixo e depois para um valor alto
+Verifique que a luminosidade da interface muda de forma perceptível
+Reative o brilho adaptativo se for o padrão do laboratório
+
+TEST-028 - Tela: tempo até desligar a tela
+Abra o aplicativo Configurações
+Navegue até as configurações de Tela
+Toque em Tempo limite da tela ou suspensão
+Selecione um intervalo curto (ex.: 30 segundos ou 1 minuto)
+Verifique que a opção selecionada aparece marcada no resumo
+Restaure o intervalo anterior usado no laboratório
+
+TEST-029 - Tela: bloquear rotação automática
+Abra o aplicativo Configurações
+Navegue até as configurações de Tela
+Desative a rotação automática da tela
+Abra o Chrome em qualquer página
+Gire o aparelho para paisagem
+Verifique que a interface permanece em retrato
+Ative novamente a rotação automática
+
+TEST-030 - Tela: aumentar tamanho da fonte do sistema
+Abra o aplicativo Configurações
+Navegue até as configurações de Tela
+Abra Tamanho da fonte ou Tamanho da fonte e estilo de exibição
+Aumente um nível em relação ao padrão do laboratório
+Verifique que os rótulos das Configurações ficam maiores
+Abra o Chrome e confira que o texto do menu também reflete o aumento
+Restaure o tamanho de fonte padrão
+
+TEST-031 - Tela: escala de exibição temporária
+Abra o aplicativo Configurações
+Navegue até as configurações de Tela
+Abra Tamanho da fonte e estilo de exibição
+Reduza a escala de exibição em um passo
+Volte à tela inicial e verifique que mais ícones cabem na grade
+Restaure a escala padrão do laboratório
+
+TEST-032 - Acessibilidade: texto em negrito
+Abra o aplicativo Configurações
+Navegue até as configurações de Acessibilidade
+Ative Texto em negrito ou fonte em negrito
+Abra o aplicativo Configurações novamente na mesma sessão
+Verifique que os títulos de menu aparecem mais espessos
+Desative Texto em negrito ao final
+
+TEST-033 - Acessibilidade: correção de cor
+Abra o aplicativo Configurações
+Navegue até as configurações de Acessibilidade
+Abra Correção de cor ou filtro de daltonismo
+Selecione um modo de correção disponível (ex.: Deuteranomalia) sem alterar permanentemente se proibido
+Verifique que a pré-visualização ou a tela muda de tonalidade
+Desative ou restaure Nenhum ao final
+
+TEST-034 - Acessibilidade: ativar e desativar TalkBack
+Abra o aplicativo Configurações
+Navegue até as configurações de Acessibilidade
+Ative o serviço TalkBack ou Leitor de tela
+Verifique que o feedback falado inicia ao focar um item
+Desative o TalkBack pelo atalho ou pelo mesmo menu
+Verifique que o feedback falado cessa
+
+TEST-035 - Acessibilidade: contraste elevado
+Abra o aplicativo Configurações
+Navegue até as configurações de Acessibilidade
+Ative Contraste elevado ou cores de alto contraste se disponível
+Verifique que bordas e textos ganham maior contraste na interface
+Desative Contraste elevado ao final
+
+TEST-036 - Chrome: permissão de câmera negada
+Abra o aplicativo Configurações
+Navegue até Apps e notificações > Ver todos os aplicativos
+Selecione o aplicativo Chrome
+Toque em Permissões
+Selecione Câmera
+Escolha Negar
+Verifique que o estado da permissão aparece como negado
+Abra uma página de teste que solicita câmera e confirme que o Chrome exibe bloqueio ou aviso coerente
+
+TEST-037 - Conexão WiFi Básica
+Abra o aplicativo Configurações
+Navegue até as configurações de WiFi
+Ative o WiFi
+Selecione a rede "TestNetwork_5G"
+Digite a senha "secure123"
+Toque em Conectar
+Verifique que o ícone de WiFi conectado aparece na barra de status
+Verifique que o nome da rede mostra "TestNetwork_5G"
+
+TEST-038 - Wi‑Fi: inspecionar rede conectada
+Abra o aplicativo Configurações
+Navegue até Rede e internet > Wi‑Fi
+Toque na rede conectada atual (SSID do laboratório)
+Verifique que nome da rede, intensidade de sinal e endereço IP ou detalhes de conexão são exibidos
+Volte à lista de redes sem alterar a senha salva
+
+TEST-039 - Wi‑Fi: desligar e religar o rádio
+Abra o aplicativo Configurações
+Navegue até Rede e internet > Wi‑Fi
+Desative o interruptor principal do Wi‑Fi
+Verifique que o ícone de Wi‑Fi some da barra de status
+Ative o interruptor principal do Wi‑Fi novamente
+Verifique que a lista de redes disponíveis é exibida
+Reconecte à rede do laboratório se necessário e confirme ícone de conectado
+
+TEST-040 - Esquecer Rede WiFi
+Abra o aplicativo Configurações
+Navegue até as configurações de WiFi
+Ative o WiFi
+Selecione a rede "TestNetwork_5G"
+Digite a senha "secure123"
+Toque em Conectar
+Verifique que o ícone de WiFi conectado aparece na barra de status
+Pressione e segure na rede conectada
+Toque em Esquecer Rede
+Verifique que a rede foi removida da lista de redes salvas

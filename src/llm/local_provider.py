@@ -7,8 +7,8 @@ from difflib import SequenceMatcher
 from src.llm.base import LLMProvider
 
 # ---------------------------------------------------------------------------
-# Classificação de verbos baseada no documento BB8 Verb Group Classification
-# da Motorola, adaptada para português e inglês.
+# Classificação de verbos baseada em glossário de grupos verbais (BB8),
+# adaptada para português e inglês.
 # ---------------------------------------------------------------------------
 
 VERB_GROUPS = {

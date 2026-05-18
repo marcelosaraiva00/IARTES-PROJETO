@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import config
 from src.engine.cache import StepCache
 from src.llm.base import LLMProvider
 from src.models.test_case import TestCase
@@ -39,7 +40,13 @@ IMPORTANT: Every single step in the list below MUST appear as a key in the mappi
 STEPS TO NORMALIZE:
 """
 
-BATCH_SIZE = 40
+DEFAULT_BATCH_SIZE = 40
+
+
+def _batch_size_for(llm: LLMProvider) -> int:
+    if llm.provider_name == "gemini":
+        return max(1, min(config.GEMINI_BATCH_SIZE, DEFAULT_BATCH_SIZE))
+    return DEFAULT_BATCH_SIZE
 
 
 def normalize_steps(
@@ -76,7 +83,9 @@ def normalize_steps(
 
     all_mappings: dict[str, dict] = dict(cached)
 
-    for batch in _batches(uncached, BATCH_SIZE):
+    batch_size = _batch_size_for(llm)
+
+    for batch in _batches(uncached, batch_size):
         step_list = "\n".join(f"- {text}" for text in batch)
         prompt = NORMALIZATION_PROMPT + step_list
         result = llm.complete_json(prompt)

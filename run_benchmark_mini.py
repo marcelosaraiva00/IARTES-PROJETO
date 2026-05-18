@@ -94,7 +94,7 @@ Verifique que o visor está ativo
 Toque no botão de captura
 Verifique que a animação do obturador é exibida
 Verifique que a notificação de foto salva aparece
-Abra o aplicativo Galeria
+Abra o aplicativo Fotos (Google Fotos)
 Verifique que a última foto aparece nas fotos recentes
 
 TEST-009 - Gravação de Vídeo
@@ -105,7 +105,7 @@ Toque no botão de gravar
 Aguarde 10 segundos
 Toque no botão de parar gravação
 Verifique que a notificação de vídeo salvo aparece
-Abra o aplicativo Galeria
+Abra o aplicativo Fotos (Google Fotos)
 Verifique que o último vídeo aparece na mídia recente
 Reproduza o vídeo gravado
 Verifique que a reprodução do vídeo funciona corretamente

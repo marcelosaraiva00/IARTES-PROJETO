@@ -1,3 +1,5 @@
+Target device: Google Pixel 5a 5G, Android 11 (stock UI). Suggested language: English (US) or Portuguese (Brazil) to match lab setup.
+
 TEST-001 - WiFi Basic Connection
 Open Settings app
 Navigate to WiFi settings
@@ -60,7 +62,7 @@ Enable Bluetooth toggle
 Select "WH-1000XM5" from available devices
 Confirm pairing code on both devices
 Verify "WH-1000XM5" shows as Connected
-Open Music Player app
+Open YouTube Music or your lab-standard music app
 Play a song
 Verify audio is routed to Bluetooth headset
 Verify media controls appear on headset
@@ -81,30 +83,30 @@ Verify call audio switches to phone speaker
 Verify call remains connected
 
 TEST-008 - Camera Photo Capture
-Open Camera app
+Open Google Camera app
 Switch to Photo mode
 Verify viewfinder is active
 Tap capture button
 Verify shutter animation plays
 Verify photo saved notification appears
-Open Gallery app
+Open Google Photos app
 Verify last photo appears in recent photos
 
 TEST-009 - Camera Video Recording
-Open Camera app
+Open Google Camera app
 Switch to Video mode
 Verify viewfinder is active
 Tap record button
 Wait 10 seconds
 Tap stop recording button
 Verify video saved notification appears
-Open Gallery app
+Open Google Photos app
 Verify last video appears in recent media
 Play the recorded video
 Verify video playback works correctly
 
 TEST-010 - Camera Front Facing Switch
-Open Camera app
+Open Google Camera app
 Switch to Photo mode
 Verify viewfinder is active
 Tap switch camera button
@@ -114,7 +116,7 @@ Tap capture button
 Verify selfie photo saved
 
 TEST-011 - Camera Zoom During Video
-Open Camera app
+Open Google Camera app
 Switch to Video mode
 Verify viewfinder is active
 Tap record button
@@ -122,7 +124,7 @@ Pinch to zoom in to 3x
 Verify zoom level indicator shows 3x
 Pinch to zoom out to 1x
 Tap stop recording button
-Open Gallery app
+Open Google Photos app
 Play the recorded video
 Verify zoom transitions appear in playback
 
@@ -130,22 +132,22 @@ TEST-012 - NFC Payment Setup
 Open Settings app
 Navigate to NFC settings
 Enable NFC toggle
-Open Wallet app
+Open Google Pay
 Tap Add payment method
 Enter card number "4111-1111-1111-1111"
 Enter expiration date and CVV
 Verify card added successfully
-Verify card appears in Wallet
+Verify card appears in Google Pay
 
 TEST-013 - NFC Quick Payment
 Open Settings app
 Navigate to NFC settings
 Enable NFC toggle
-Open Wallet app
+Open Google Pay
 Verify default payment card is set
 Hold phone near payment terminal
 Verify payment authentication prompt appears
-Authenticate with fingerprint
+Authenticate with fingerprint on rear sensor
 Verify transaction completed notification
 
 TEST-014 - Do Not Disturb Calls Exception
@@ -186,7 +188,7 @@ Verify current battery percentage displayed
 Enable Battery Saver mode
 Verify status bar turns orange
 Verify background sync is paused notification
-Open Email app
+Open Gmail app
 Verify emails are not auto-syncing
 Disable Battery Saver mode
 Verify status bar returns to normal color
@@ -207,7 +209,7 @@ TEST-019 - Screen Rotation Lock
 Open Settings app
 Navigate to Display settings
 Disable auto-rotate
-Open Browser app
+Open Chrome app
 Navigate to a webpage
 Rotate device to landscape
 Verify screen remains in portrait mode
@@ -222,19 +224,19 @@ Enable Dark Mode
 Verify Settings app background changes to dark
 Open Messaging app
 Verify Messaging app background is dark
-Open Browser app
-Verify Browser interface is dark
+Open Chrome app
+Verify Chrome interface is dark
 Disable Dark Mode
 Verify apps return to light theme
 
 TEST-021 - Multi-Window Split Screen
 Open Messaging app
 Trigger split screen mode
-Select Browser app for second panel
+Select Chrome for second panel
 Verify both apps are visible simultaneously
 Type a message in Messaging app
 Verify message text appears correctly
-Scroll webpage in Browser panel
+Scroll webpage in Chrome panel
 Verify scrolling works independently
 Exit split screen mode
 Verify full screen returns to last active app
@@ -244,7 +246,7 @@ Open Settings app
 Navigate to Security settings
 Tap Fingerprint setup
 Enter device PIN for verification
-Place finger on sensor
+Place finger on rear fingerprint sensor under the G logo
 Lift and place finger repeatedly until enrollment completes
 Verify fingerprint registered successfully message
 Verify fingerprint appears in registered list
@@ -256,7 +258,7 @@ Tap Fingerprint setup
 Enter device PIN for verification
 Verify at least one fingerprint is registered
 Lock device screen
-Place registered finger on sensor
+Place registered finger on rear fingerprint sensor
 Verify device unlocks to home screen
 
 TEST-024 - VPN Connection Setup
@@ -268,7 +270,7 @@ Enter server address "vpn.testcorp.com"
 Enter credentials
 Tap Connect
 Verify VPN connected icon appears in status bar
-Open Browser app
+Open Chrome app
 Verify IP address has changed through VPN
 
 TEST-025 - VPN Auto-Disconnect on WiFi Change
@@ -326,7 +328,7 @@ Tap Permissions
 Verify Location permission is listed
 Toggle Location permission to Deny
 Verify permission denied confirmation
-Open Camera app
+Open Google Camera app
 Verify location tag is not added to new photos
 
 TEST-030 - Hotspot Creation and Connection

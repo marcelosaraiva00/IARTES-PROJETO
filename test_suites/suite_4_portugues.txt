@@ -46,22 +46,24 @@ Verifique que o texto principal fica legível e o ruído visual diminui
 Ajuste o tamanho da fonte dentro do leitor, se houver opção
 Saia do modo de leitura e confirme que o site normal retorna
 
-TEST-006 - Digitalização de documento com Google Câmera (só armazenamento local)
+TEST-006 - Google Câmera: modo retrato e revisão local
 Abra o aplicativo Google Câmera
-Use o modo ou fluxo de digitalização de documento disponível na build (ou Lens só para captura, sem login)
-Aponte para uma folha de papel de teste do laboratório
-Capture e ajuste as bordas na pré-visualização
-Salve em PDF ou imagem no armazenamento interno
-Abra o arquivo pelo aplicativo Arquivos e verifique a legibilidade do texto
+Selecione o modo Retrato ou equivalente com desfoque de fundo
+Aponte para um objeto ou cartão de teste fixo do laboratório a cerca de um metro
+Capture a foto e aguarde o processamento na miniatura
+Abra a imagem pela miniatura ou pelo Arquivos em DCIM > Camera
+Verifique que o assunto principal permanece nítido e o fundo aparece mais suave que no modo foto comum
 
 TEST-007 - Teclado virtual: segundo layout usando o Chrome
-Abra o aplicativo Configurações
-Navegue até Sistema > Idiomas e entrada > Teclado virtual
-Adicione um layout secundário de teste (ex.: inglês EUA)
-Abra o Chrome e toque na barra de endereço para abrir o teclado
-Troque de layout pelo ícone de globo ou tecla de idioma
-Digite uma frase curta na barra sem enviar a página
-Remova o layout adicional nas Configurações ao final se o laboratório exige retorno ao estado inicial
+1) Abra o aplicativo Configurações
+2) Navegue até Sistema > Idiomas e entrada > Teclado na Tela
+3) Selecione GBoard > Idiomas > Adicionar Teclado
+4) Adicione um layout secundário de teste (ex.: inglês EUA)
+5) Abra o Chrome e toque na barra de endereço para abrir o teclado
+6) Toque no ícone de engrenagem > Selecione Idiomas e escolha Inglês
+7) Digite uma frase curta na barra sem enviar a página
+8) Remova o layout adicional nas Configurações ao final se o laboratório exige retorno ao
+estado inicial
 
 TEST-008 - Luz noturna: intensidade e agendamento
 Abra o aplicativo Configurações
@@ -99,14 +101,14 @@ Abra o aplicativo Telefone e confira que o teclado de discagem responde normalme
 Abra o aplicativo Relógio e confirme que a interface de alarmes e temporizadores abre sem erro
 Desative a Economia de bateria e confirme retorno ao comportamento usual
 
-TEST-012 - DNS privado: configurar e validar no aparelho
+TEST-012 - Hotspot móvel: ativar, inspecionar credenciais e desativar
 Abra o aplicativo Configurações
-Navegue até Rede e internet > DNS privado
-Escolha Nome do host do provedor DNS e insira o hostname de teste do laboratório
-Salve a configuração
-Abra o Chrome em uma página HTTPS de verificação de DNS (ferramenta aprovada)
-Confira que o resolvedor exibido corresponde ao hostname configurado
-Restaure DNS privado para Automático ao final
+Navegue até Rede e internet > Hotspot e tethering > Hotspot Wi‑Fi
+Ative o hotspot móvel
+Verifique que nome da rede (SSID) e senha ou QR de compartilhamento são exibidos na tela
+Confirme o ícone de hotspot na barra de status ou indicador equivalente
+Desative o hotspot sem conectar um segundo dispositivo de teste, conforme política da bancada
+Verifique que o ícone some e que o Wi‑Fi do aparelho permanece utilizável para os demais testes
 
 TEST-013 - Privacidade na tela de bloqueio: ocultar conteúdo sensível das notificações
 Abra o aplicativo Configurações
@@ -119,7 +121,7 @@ Restaure o comportamento anterior ao final se for o padrão exigido pelo laborat
 TEST-014 - Atenção na tela (screen attention)
 Abra o aplicativo Configurações
 Navegue até Tela
-Ative Atenção na tela
+Ative Reconhecimento de tela de uso.
 Abra um artigo no Chrome e mantenha o foco visual além do tempo de bloqueio configurado
 Verifique que a tela não apaga enquanto você continua olhando
 Desative Atenção na tela ao concluir
@@ -131,15 +133,14 @@ Verifique acesso ao teclado de emergência sem desbloquear o aparelho
 Se o laboratório já preencheu informações médicas em Configurações, confira que o cartão pode ser aberto sem desbloquear
 Feche os painéis sem completar chamada real se proibido pela política
 
-TEST-016 - Legendas ao vivo com arquivo de vídeo local
-Garanta um arquivo de vídeo com fala clara no armazenamento interno (fornecido pelo laboratório)
+TEST-016 - Acessibilidade: ampliação temporária por gesto
 Abra o aplicativo Configurações
-Navegue até Acessibilidade > Legendas ao vivo (Live Caption)
-Ative Legendas ao vivo
-Abra o vídeo pelo aplicativo Arquivos com o reprodutor do sistema
-Verifique que legendas aparecem sincronizadas com a fala enquanto a mídia toca
-Pause a reprodução e confirme que as legendas cessam ou esmaecem
-Desative Legendas ao vivo
+Navegue até Acessibilidade > Ampliação ou Atalho de ampliação
+Ative a ampliação e o atalho por toque triplo ou gesto indicado na build
+Volte à tela inicial e acione o atalho de ampliação
+Verifique que a área central da interface aumenta de forma nítida
+Arraste para mover a lupa e faça pinça para ajustar o zoom, se disponível
+Desative a ampliação e confirme que a interface retorna ao tamanho normal
 
 TEST-017 - Modo avião: isolar rádios e restaurar conectividade
 Abra o aplicativo Configurações

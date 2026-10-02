@@ -1,0 +1,10 @@
+test_count: 10
+total_original_steps: 77
+total_optimized_steps: 75
+steps_eliminated: 2
+reduction_percent: 2.6
+resetup_count: 2
+merge_depth_max: 1
+context_switches: 25
+destructive_steps: 25
+unique_normalized_ids: 73

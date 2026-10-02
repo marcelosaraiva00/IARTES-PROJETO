@@ -55,15 +55,14 @@ Abra a imagem pela miniatura ou pelo Arquivos em DCIM > Camera
 Verifique que o assunto principal permanece nítido e o fundo aparece mais suave que no modo foto comum
 
 TEST-007 - Teclado virtual: segundo layout usando o Chrome
-1) Abra o aplicativo Configurações
-2) Navegue até Sistema > Idiomas e entrada > Teclado na Tela
-3) Selecione GBoard > Idiomas > Adicionar Teclado
-4) Adicione um layout secundário de teste (ex.: inglês EUA)
-5) Abra o Chrome e toque na barra de endereço para abrir o teclado
-6) Toque no ícone de engrenagem > Selecione Idiomas e escolha Inglês
-7) Digite uma frase curta na barra sem enviar a página
-8) Remova o layout adicional nas Configurações ao final se o laboratório exige retorno ao
-estado inicial
+Abra o aplicativo Configurações
+Navegue até Sistema > Idiomas e entrada > Teclado na Tela
+Selecione GBoard > Idiomas > Adicionar Teclado
+Adicione um layout secundário de teste (ex.: inglês EUA)
+Abra o Chrome e toque na barra de endereço para abrir o teclado
+Toque no ícone de engrenagem > Selecione Idiomas e escolha Inglês
+Digite uma frase curta na barra sem enviar a página
+Remova o layout adicional nas Configurações ao final se o laboratório exige retorno ao estado inicial
 
 TEST-008 - Luz noturna: intensidade e agendamento
 Abra o aplicativo Configurações
@@ -121,7 +120,7 @@ Restaure o comportamento anterior ao final se for o padrão exigido pelo laborat
 TEST-014 - Atenção na tela (screen attention)
 Abra o aplicativo Configurações
 Navegue até Tela
-Ative Reconhecimento de tela de uso.
+Ative Reconhecimento de Tela de Uso
 Abra um artigo no Chrome e mantenha o foco visual além do tempo de bloqueio configurado
 Verifique que a tela não apaga enquanto você continua olhando
 Desative Atenção na tela ao concluir
@@ -344,3 +343,4 @@ Verifique que o ícone de WiFi conectado aparece na barra de status
 Pressione e segure na rede conectada
 Toque em Esquecer Rede
 Verifique que a rede foi removida da lista de redes salvas
+

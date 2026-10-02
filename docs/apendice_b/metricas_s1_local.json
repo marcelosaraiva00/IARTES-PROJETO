@@ -1,0 +1,27 @@
+{
+  "suite": "S1 (suite_1_portugues.txt)",
+  "provider": "local",
+  "stats": {
+    "original_step_count": 77,
+    "optimized_step_count": 75,
+    "steps_saved": 2,
+    "reduction_percent": 2.6,
+    "test_count": 10
+  },
+  "metrics": {
+    "total_original_steps": 77,
+    "total_optimized_steps": 75,
+    "steps_eliminated": 2,
+    "reduction_percent": 2.6,
+    "unique_normalized_ids": 73,
+    "normalized_groups": 73,
+    "verifications_detected": 15,
+    "actions_detected": 58,
+    "destructive_steps": 25,
+    "resetup_count": 2,
+    "context_switches": 25,
+    "merge_depth_max": 1,
+    "merge_depth_avg": 0.16,
+    "test_count": 10
+  }
+}

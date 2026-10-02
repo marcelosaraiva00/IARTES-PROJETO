@@ -1,0 +1,31 @@
+Dispositivo alvo: Google Pixel 5a 5G, Android 11 (interface stock / Pixel Launcher). Idioma sugerido: Português (Brasil).
+
+TEST-001 - Widgets na Tela Inicial
+Toque e segure em uma área vazia da tela inicial
+Toque em Widgets
+Selecione o widget Relógio digital em tamanho médio
+Posicione o widget na primeira página inicial
+Verifique que o relógio exibe a hora correta
+Redimensione o widget para o tamanho grande
+Verifique que o layout se ajusta sem sobrepor ícones
+
+TEST-002 - Gravação de Tela com Áudio do Sistema
+Abra o painel de configurações rápidas
+Toque em Gravar tela
+Ative a captura de áudio do sistema
+Inicie a gravação
+Abra o aplicativo de Música e reproduza uma faixa curta
+Pare a gravação pela notificação
+Abra o aplicativo Fotos (Google Fotos)
+Reproduza o vídeo gravado e verifique que o áudio da faixa está presente
+
+TEST-003 - Lanterna e Atalhos do Painel Rápido
+Abra o painel de configurações rápidas
+Ative o ícone da Lanterna
+Verifique que o LED traseiro permanece aceso
+Edite os atalhos do painel rápido
+Adicione o atalho Gravador de tela se não estiver visível
+Salve a ordem dos atalhos
+Desative a Lanterna
+Verifique que o LED se apaga
+

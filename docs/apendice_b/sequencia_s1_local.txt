@@ -1,0 +1,75 @@
+  1. Toque e segure em uma área vazia da tela inicial
+  2. Toque em Widgets
+  3. Selecione o widget Relógio digital em tamanho médio
+  4. Posicione o widget na primeira página inicial [DESTRUTIVO]
+  5. Verifique que o relógio exibe a hora correta [VERIF]
+  6. Redimensione o widget para o tamanho grande [DESTRUTIVO]
+  7. Verifique que o layout se ajusta sem sobrepor ícones [PASSA TEST-001; VERIF]
+  8. Abra o Google Câmera ou o fluxo de digitalização do Google Lens integrado
+  9. Selecione o modo Documento ou Digitalizar
+ 10. Aponte para uma folha A4 impressa de teste
+ 11. Capture a digitalização [DESTRUTIVO]
+ 12. Ajuste as bordas do documento na pré-visualização
+ 13. Salve como PDF ou imagem conforme opção disponível [DESTRUTIVO]
+ 14. Abra o arquivo salvo e verifique que o texto está legível [PASSA TEST-006; VERIF]
+ 15. Abra o aplicativo Arquivos (do Google)
+ 16. Selecione duas imagens de teste na pasta Download
+ 17. Toque em Compactar ou Criar arquivo ZIP [DESTRUTIVO]
+ 18. Verifique que o arquivo compactado aparece na mesma pasta [VERIF]
+ 19. Abra o Gmail
+ 20. Redija um novo e-mail de teste
+ 21. Anexe o arquivo ZIP criado [DESTRUTIVO]
+ 22. Verifique que o anexo aparece com o tamanho correto antes de enviar [PASSA TEST-010; VERIF]
+ 23. Abra o Chrome
+ 24. Acesse um artigo de notícias com muitos parágrafos
+ 25. Ative o modo Leitura ou visualização simplificada [DESTRUTIVO]
+ 26. Verifique que anúncios e menus laterais somem do conteúdo [VERIF]
+ 27. Ajuste o tamanho da fonte no modo leitura [DESTRUTIVO]
+ 28. Verifique que o texto reflowa sem cortar parágrafos [VERIF]
+ 29. Saia do modo leitura e verifique que a página original volta [PASSA TEST-005; DESTRUTIVO]
+ 30. Abra o painel de configurações rápidas
+ 31. Ative o ícone da Lanterna [DESTRUTIVO]
+ 32. Verifique que o LED traseiro permanece aceso [VERIF]
+ 33. Edite os atalhos do painel rápido [DESTRUTIVO]
+ 34. Adicione o atalho Gravador de tela se não estiver visível
+ 35. Salve a ordem dos atalhos [DESTRUTIVO]
+ 36. Desative a Lanterna [DESTRUTIVO]
+ 37. Verifique que o LED se apaga [PASSA TEST-003; VERIF]
+ 38. Toque em Gravar tela
+ 39. Ative a captura de áudio do sistema [DESTRUTIVO]
+ 40. Inicie a gravação [DESTRUTIVO]
+ 41. Abra o aplicativo de Música e reproduza uma faixa curta
+ 42. Pare a gravação pela notificação [DESTRUTIVO]
+ 43. Abra o aplicativo Fotos (Google Fotos)
+ 44. Reproduza o vídeo gravado e verifique que o áudio da faixa está presente [PASSA TEST-002; VERIF]
+ 45. Abra o aplicativo Configurações
+ 46. Navegue até as configurações do Assistente de voz
+ 47. Ative o acionamento por palavra de ativação em ambiente de teste [DESTRUTIVO]
+ 48. Diga o comando de ativação seguido de "que horas são"
+ 49. Verifique que o assistente responde com a hora atual [VERIF]
+ 50. Abra o assistente e peça para "abrir o aplicativo Calendário"
+ 51. Verifique que o Calendário é aberto [VERIF]
+ 52. Desative o acionamento por voz para não permanecer ativo [PASSA TEST-004; DESTRUTIVO]
+ 53. Navegue até Dispositivos conectados e abra Transmitir (Cast) ou espelhamento com receptor na mesma rede
+ 54. Ative a transmissão ou espelhamento sem fios [DESTRUTIVO]
+ 55. Selecione o receptor de teste na mesma rede
+ 56. Verifique que a tela do telefone aparece no receptor [VERIF]
+ 57. Abra o aplicativo Fotos (Google Fotos) no telefone
+ 58. Verifique que a imagem é exibida no receptor com atraso aceitável [VERIF]
+ 59. Encerre o espelhamento [PASSA TEST-007; DESTRUTIVO]
+ 60. Abra o aplicativo Configurações [RE-SETUP]
+ 61. Navegue até Bem-estar digital (Digital Wellbeing)
+ 62. Selecione o aplicativo de rede social de teste
+ 63. Defina um limite diário de 15 minutos [DESTRUTIVO]
+ 64. Abra o aplicativo e use até o limite ser atingido
+ 65. Verifique que o aviso de tempo esgotado ou pausa aparece [VERIF]
+ 66. Ignore temporariamente por 1 minuto se a opção existir [DESTRUTIVO]
+ 67. Remova ou aumente o limite ao final do teste [PASSA TEST-009; DESTRUTIVO]
+ 68. Abra o aplicativo Configurações [RE-SETUP]
+ 69. Navegue até as configurações de Idioma e entrada
+ 70. Toque em Teclado virtual
+ 71. Adicione um segundo layout de teclado de teste
+ 72. Abra o aplicativo Mensagens e toque no campo de texto
+ 73. Troque para o segundo layout pelo ícone do globo ou barra de espaço [DESTRUTIVO]
+ 74. Digite uma frase curta e verifique os caracteres corretos
+ 75. Volte ao layout padrão e remova o teclado de teste se desejado [PASSA TEST-008; DESTRUTIVO]

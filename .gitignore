@@ -1,5 +1,8 @@
 .env
 .tmp/
+.cache/
+data/*.db
+data/*.db-*
 __pycache__/
 *.pyc
 .venv/
